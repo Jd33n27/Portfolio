@@ -82,7 +82,7 @@ export const Navbar = () => {
     },
     {
       icon: <WhatsAppIcon className="w-6 h-6" />,
-      href: "https://wa.me/08077127417",
+      href: "https://wa.me/+2348077127417",
       name: "WhatsApp",
     },
     {
@@ -205,12 +205,6 @@ export const Navbar = () => {
               <Moon className="w-5 h-5" />
             )}
           </button>
-
-          <a href="#contact">
-            <div className="bg-white text-[#034694] p-2.5 rounded-full shadow-md">
-              <MessageSquare className="w-4 h-4" />
-            </div>
-          </a>
         </div>
       </motion.div>
     </>
