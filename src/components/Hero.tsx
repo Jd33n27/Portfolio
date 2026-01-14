@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
@@ -19,23 +19,38 @@ export const Hero = () => {
           Hello, I'm Jamal
         </motion.h1>
 
+        {/* Role & Location Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col items-center justify-center gap-2 md:gap-4 text-white/80 text-lg md:text-xl mb-8 font-medium"
+        >
+          <span className="text-white">Frontend Developer</span>
+
+          <div className="flex items-center gap-1.5">
+            <MapPin className="w-6 h-6 text-white/70" />
+            <span>Lagos, Nigeria.</span>
+          </div>
+        </motion.div>
+
         {/* Subheadline - The Empathetic Part */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           className="text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          <br />A Developer bridging the gap between complex engineering and
-          intuitive design. I don't just write code; I build products that solve
-          real problems.
+          A Developer bridging the gap between complex engineering and intuitive
+          design. I don't just write code; I build products that solve real
+          problems.
         </motion.p>
 
         {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <Button
@@ -47,20 +62,11 @@ export const Hero = () => {
           <Button
             size="lg"
             variant="ghost"
-            className="text-base h-12 px-8 border border-border"
+            className="text-chelsea text-[18px] font-bold h-12 px-8 border border-border"
           >
             Contact Me
           </Button>
         </motion.div>
-
-        {/* Tech Stack Hints (Floating Icons) */}
-        {/* <div className="mt-20 pt-10 border-t border-border/40 grid grid-cols-3 md:grid-cols-6 gap-8 items-center justify-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-           You can replace these with actual SVG logos later, using Lucid icons for now as placeholders
-           <div className="flex flex-col items-center gap-2"><Code2 className="w-6 h-6"/> <span className="text-xs font-mono">React</span></div>
-           <div className="flex flex-col items-center gap-2"><Database className="w-6 h-6"/> <span className="text-xs font-mono">Next.js</span></div>
-           <div className="flex flex-col items-center gap-2"><Layout className="w-6 h-6"/> <span className="text-xs font-mono">Tailwind</span></div>
-           Add more icons or logos here
-        </div> */}
       </div>
     </section>
   );
