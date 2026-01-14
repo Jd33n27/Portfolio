@@ -1,3 +1,11 @@
+import { Hero } from "@/components/Hero";
+import { Navbar } from "@/components/Navbar";
+
 export default function HomePage() {
-  return <div className="text-2xl text-center">Home</div>;
+  return (
+    <>
+      <Navbar />
+      <Hero />
+    </>
+  );
 }
