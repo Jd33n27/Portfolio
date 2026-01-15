@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Mail, Phone } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
-// --- Reusable Components ---
+// Reusable Components
 
 const SectionHeader = ({ title }: { title: string }) => (
   <motion.h2
@@ -15,7 +15,15 @@ const SectionHeader = ({ title }: { title: string }) => (
   </motion.h2>
 );
 
-const TechCard = ({ name, iconPath, color }: { name: string; iconPath: string; color: string }) => (
+const TechCard = ({
+  name,
+  iconPath,
+  color,
+}: {
+  name: string;
+  iconPath: string;
+  color: string;
+}) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -74,25 +82,24 @@ const ExperienceCard = ({
   </motion.div>
 );
 
-// --- Main Page Component ---
+// Main Page Component
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen pt-24 px-4 pb-20 md:px-32 lg:px-48">
       <div className="max-w-6xl mx-auto">
-        
         {/* Back Link */}
-        <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="mb-12"
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="mb-12"
         >
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
           >
             <div className="p-2 rounded-full bg-white/5 group-hover:bg-chelsea/20">
-                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             </div>
             Back to Home
           </Link>
@@ -101,11 +108,11 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="mb-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="lg:col-span-2"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="lg:col-span-2"
             >
               <h1 className="text-5xl md:text-7xl font-bold mb-4 text-white tracking-tight">
                 Musa Jamaldeen
@@ -115,9 +122,9 @@ export default function AboutPage() {
               </div>
               <div className="space-y-6 text-lg text-gray-300 leading-relaxed max-w-2xl">
                 <p>
-                  I'm a Developer bridging the gap between complex engineering and
-                  intuitive design. I don't just write code; I build products
-                  that solve real problems.
+                  I'm a Developer bridging the gap between complex engineering
+                  and intuitive design. I don't just write code; I build
+                  products that solve real problems.
                 </p>
                 <p>
                   Specializing in the React ecosystem, I build scalable,
@@ -129,17 +136,17 @@ export default function AboutPage() {
             </motion.div>
 
             {/* Profile Image Area */}
-            <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex justify-center lg:justify-end"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex justify-center lg:justify-end"
             >
               <div className="w-64 h-64 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white/5">
                 {/* Placeholder for your actual image */}
                 <div className="absolute inset-0 bg-gradient-to-br from-chelsea/20 to-purple-500/20" />
                 <div className="absolute inset-0 flex items-center justify-center text-white/20 font-bold">
-                    [Your Photo Here]
+                  [Your Photo Here]
                 </div>
               </div>
             </motion.div>
