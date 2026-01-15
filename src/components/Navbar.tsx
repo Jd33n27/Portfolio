@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 // Custom Icon for X
 const XIcon = ({ className }: { className?: string }) => (
@@ -50,16 +51,16 @@ export const Navbar = () => {
   };
 
   const navLinks = [
-    { name: "Home", href: "#home", icon: <Home className="w-5 h-5" /> },
-    { name: "About", href: "#about", icon: <User className="w-5 h-5" /> },
+    { name: "Home", href: "/", icon: <Home className="w-5 h-5" /> },
+    { name: "About", href: "/about", icon: <User className="w-5 h-5" /> },
     {
       name: "Projects",
-      href: "#projects",
+      href: "/projects",
       icon: <Briefcase className="w-5 h-5" />,
     },
     {
       name: "Resume",
-      href: "#resume",
+      href: "/resume",
       icon: <FileTextIcon className="w-5 h-5" />,
     },
   ];
@@ -103,9 +104,9 @@ export const Navbar = () => {
       >
         <nav className="flex flex-col gap-8 flex-1 justify-center">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.href}
               onClick={() => setActiveSection(link.name.toLowerCase())}
               className={cn(
                 "p-3 rounded-xl transition-all duration-300 relative group",
@@ -119,7 +120,7 @@ export const Navbar = () => {
               <span className="absolute left-14 top-1/2 -translate-y-1/2 glass text-gray-200 text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-sm z-50">
                 {link.name}
               </span>
-            </a>
+            </Link>
           ))}
         </nav>
 

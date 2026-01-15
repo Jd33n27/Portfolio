@@ -1,30 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./routes/_index";
 import RootLayout from "./routes/root-layout";
+import AboutPage from "./routes/about"; // Import the new page
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    children: [{ index: true, element: <HomePage /> }],
+    children: [
+        { index: true, element: <HomePage /> },
+        { path: "about", element: <AboutPage /> } // Add the route
+    ],
   },
-
-  //   {
-  //     path: "dashboard",
-  //     element: <DashboardLayout />,
-  //     children: [
-  //       { index: true, element: <DashboardHome /> },
-  //       { path: "settings", element: <DashboardSettings /> },
-  //       { path: "transactions", element: <DashboardTransactions /> },
-  //     ],
-  //   },
-
-  //   {
-  //     path: "auth",
-  //     element: <AuthLayout />,
-  //     children: [
-  //       { path: "login", element: <Login /> },
-  //       { path: "profile", element: <Profile /> },
-  //     ],
-  //   },
 ]);
