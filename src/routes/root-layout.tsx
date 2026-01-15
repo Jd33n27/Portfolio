@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 export default function RootLayout() {
   return (
-    <div className="min-h-screen min-w-full bg-chelsea">
+    <div className="min-h-screen min-w-full bg-business-gradient text-white">
       <ClickRipple />
       <Navbar />
       <main className="grid place-content-center">

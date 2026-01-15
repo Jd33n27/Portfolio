@@ -143,10 +143,18 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
-  
+
   .glass-hover:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .bg-business-gradient {
+    background-color: #020617;
+    background-image: 
+      radial-gradient(circle at 15% 0%, rgba(37, 99, 235, 0.15), transparent 40%),
+      radial-gradient(circle at 85% 100%, rgba(3, 70, 148, 0.2), transparent 40%);
+    background-attachment: fixed;
   }
 }
