@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-chelsea/99 opacity-80 pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-transparent pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
         {/* Main Headline */}
@@ -55,14 +55,14 @@ export const Hero = () => {
         >
           <Button
             size="lg"
-            className="bg-chelsea hover:bg-chelsea-hover text-white text-base h-12 px-8"
+            className="glass glass-hover text-white text-base h-12 px-8"
           >
             View Projects <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
           <Button
             size="lg"
             variant="ghost"
-            className="text-chelsea text-[18px] font-bold h-12 px-8 border border-border"
+            className="text-gray-200 text-[18px] font-bold h-12 px-8 border border-border hover:text-gray-900"
           >
             Contact Me
           </Button>

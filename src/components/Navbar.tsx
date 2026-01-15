@@ -99,7 +99,7 @@ export const Navbar = () => {
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 h-[60vh] w-18 flex-col items-center justify-between py-8 rounded-2xl bg-[#034694] shadow-xl z-50 border border-white"
+        className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 h-[60vh] w-18 flex-col items-center justify-between py-8 rounded-2xl glass glass-hover z-50 border border-white"
       >
         <nav className="flex flex-col gap-8 flex-1 justify-center">
           {navLinks.map((link) => (
@@ -116,7 +116,7 @@ export const Navbar = () => {
             >
               {link.icon}
               {/* Tooltip */}
-              <span className="absolute left-14 top-1/2 -translate-y-1/2 bg-white text-[#034694] text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-sm z-50">
+              <span className="absolute left-14 top-1/2 -translate-y-1/2 glass text-gray-200 text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-sm z-50">
                 {link.name}
               </span>
             </a>
@@ -136,7 +136,7 @@ export const Navbar = () => {
               <Moon className="w-6 h-6" />
             )}
             {/* Tooltip */}
-            <span className="absolute left-14 top-1/2 -translate-y-1/2 bg-white text-[#034694] text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-sm whitespace-nowrap z-50">
+            <span className="absolute left-14 top-1/2 -translate-y-1/2 glass text-gray-200 text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-sm whitespace-nowrap z-50">
               {isDark ? "Light Mode" : "Dark Mode"}
             </span>
           </button>
@@ -148,7 +148,7 @@ export const Navbar = () => {
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 h-[60vh] w-18 flex-col items-center justify-center py-8 rounded-2xl bg-[#034694] shadow-xl z-50 border border-white"
+        className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 h-[60vh] w-18 flex-col items-center justify-center py-8 rounded-2xl glass glass-hover z-50"
       >
         {/* Social Icons Container */}
         <div className="flex flex-col items-center justify-center gap-6">
@@ -162,7 +162,7 @@ export const Navbar = () => {
             >
               {social.icon}
               {/* Tooltip */}
-              <span className="absolute right-14 top-1/2 -translate-y-1/2 bg-white text-[#034694] text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-sm whitespace-nowrap z-50">
+              <span className="absolute right-14 top-1/2 -translate-y-1/2 glass text-gray-200 text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-sm whitespace-nowrap z-50">
                 {social.name}
               </span>
             </a>
@@ -176,7 +176,7 @@ export const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm"
       >
-        <div className="bg-[#034694] rounded-full shadow-2xl px-6 py-4 flex items-center justify-between border border-white/20">
+        <div className="glass rounded-full shadow-2xl px-6 py-4 flex items-center justify-between">
           {navLinks.map((link) => (
             <a
               key={link.name}
