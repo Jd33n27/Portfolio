@@ -1,4 +1,3 @@
-// api/og.tsx
 import { ImageResponse } from '@vercel/og';
 
 export const config = {
@@ -21,7 +20,7 @@ export default function handler(request: Request) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#034694', // Your 'chelsea' blue color
+            backgroundColor: '#034694',
             color: 'white',
           }}
         >
