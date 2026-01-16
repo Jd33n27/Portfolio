@@ -6,7 +6,6 @@ import {
   FileTextIcon,
   Github,
   Linkedin,
-  MessageSquare,
   Mail,
   Sun,
   Moon,
