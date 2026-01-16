@@ -1,3 +1,4 @@
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -87,6 +88,10 @@ const ExperienceCard = ({
 export default function AboutPage() {
   return (
     <div className="min-h-screen pt-24 px-4 pb-20 md:px-32 lg:px-48">
+      <Seo 
+        title="About Musa Jamaldeen | Software Engineer" 
+        description="Learn more about Musa Jamaldeen, a software engineer and frontend developer based in Lagos, Nigeria."
+      />
       <div className="max-w-6xl mx-auto">
         {/* Back Link */}
         <motion.div
