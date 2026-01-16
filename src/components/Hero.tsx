@@ -55,7 +55,7 @@ export const Hero = () => {
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden perspective-1000"
     >
       {/* Background Glow - Central Spotlight */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-chelsea/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 bg-chelsea/10 rounded-full blur-[120px] pointer-events-none" />
 
       {/* 4 Floating Draggable Tech Badges  */}
       
@@ -124,7 +124,7 @@ export const Hero = () => {
           className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight leading-tight pointer-events-auto"
         >
           Building Digital <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/50">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-white to-white/50">
             Products That Scale.
           </span>
         </motion.h1>

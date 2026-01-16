@@ -149,7 +149,7 @@ export default function AboutPage() {
             >
               <div className="w-64 h-64 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white/5">
                 {/* Placeholder for your actual image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-chelsea/20 to-purple-500/20" />
+                <div className="absolute inset-0 bg-linear-to-br from-chelsea/20 to-purple-500/20" />
                 <div className="absolute inset-0 flex items-center justify-center text-white/20 font-bold">
                   [Your Photo Here]
                 </div>

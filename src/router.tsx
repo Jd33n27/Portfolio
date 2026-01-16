@@ -3,6 +3,7 @@ import HomePage from "./routes/_index";
 import RootLayout from "./routes/root-layout";
 import AboutPage from "./routes/about";
 import ProjectsPage from "./routes/projects";
+import ResumePage from "./routes/resume";
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +12,8 @@ export const router = createBrowserRouter([
     children: [
         { index: true, element: <HomePage /> },
         { path: "about", element: <AboutPage /> },
-        { path: "projects", element: <ProjectsPage /> }
+        { path: "projects", element: <ProjectsPage /> },
+        { path: "resume", element: <ResumePage /> }
     ],
   },
 ]);

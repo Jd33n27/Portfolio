@@ -10,7 +10,7 @@ const projects = [
     category: "Fullstack & Cloud",
     description:
       "AI-powered business intelligence co-pilot delivering narrative insights and actionable recommendations for SMBs.",
-    image: "/assets/biz-pulse.png", // Ensure you have these images or use placeholders
+    image: "/assets/biz-pulse.png",
     slug: "bizpulse",
   },
   {
@@ -161,7 +161,7 @@ const ProjectGridItem = ({
     {/* Image Area */}
     <div className="h-48 bg-white/5 relative overflow-hidden">
       {/* If image missing, show fallback gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-chelsea/20 to-purple-900/20" />
+      <div className="absolute inset-0 bg-linear-to-br from-chelsea/20 to-purple-900/20" />
       <img
         src={project.image}
         alt={project.title}
@@ -174,7 +174,7 @@ const ProjectGridItem = ({
     </div>
 
     {/* Content Area */}
-    <div className="p-6 flex flex-col flex-grow">
+    <div className="p-6 flex flex-col grow">
       <div className="flex items-start justify-between mb-3">
         <h3 className="font-bold text-xl text-white group-hover:text-chelsea transition-colors">
           {project.title}
@@ -184,7 +184,7 @@ const ProjectGridItem = ({
         </span>
       </div>
 
-      <p className="text-gray-400 text-sm mb-6 line-clamp-2 leading-relaxed flex-grow">
+      <p className="text-gray-400 text-sm mb-6 line-clamp-2 leading-relaxed grow">
         {project.description}
       </p>
 
