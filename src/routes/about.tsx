@@ -89,8 +89,8 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen pt-24 px-4 pb-20 md:px-32 lg:px-48">
       <Seo 
-        title="About Musa Jamaldeen | Software Engineer" 
-        description="Learn more about Musa Jamaldeen, a software engineer and frontend developer based in Lagos, Nigeria."
+        title="About Musa | The Value Equation" 
+        description="I don't just write code. I build revenue-generating assets for businesses using React and Next.js."
       />
       <div className="max-w-6xl mx-auto">
         {/* Back Link */}
@@ -123,19 +123,21 @@ export default function AboutPage() {
                 Musa Jamaldeen
               </h1>
               <div className="text-2xl text-chelsea-light mb-8 font-medium">
-                Frontend Developer
+                Fractional Frontend Engineer
               </div>
               <div className="space-y-6 text-lg text-gray-300 leading-relaxed max-w-2xl">
                 <p>
-                  I'm a Developer bridging the gap between complex engineering
-                  and intuitive design. I don't just write code; I build
-                  products that solve real problems.
+                  Most developers write code. <span className="text-white font-bold">I engineer assets.</span>
                 </p>
                 <p>
-                  Specializing in the React ecosystem, I build scalable,
-                  high-performance web applications. My work focuses on creating
-                  seamless user experiences, robust architectures, and clean,
-                  maintainable codebases.
+                  I don't care about "clean code" unless it drives revenue, retention, or speed. 
+                  My job is simple: I drop into your business, identify the bottlenecks in your 
+                  frontend architecture, and build systems that remove them.
+                </p>
+                <p>
+                  If you want a pixel-pusher, look elsewhere. If you want a partner who 
+                  understands that <span className="text-white font-bold">Latency = Lost Revenue</span>, 
+                  then we should talk.
                 </p>
               </div>
             </motion.div>
@@ -151,7 +153,7 @@ export default function AboutPage() {
                 {/* Placeholder for your actual image */}
                 <div className="absolute inset-0 bg-linear-to-br from-chelsea/20 to-purple-500/20" />
                 <div className="absolute inset-0 flex items-center justify-center text-white/20 font-bold">
-                  [Your Photo Here]
+                  [Musa Image]
                 </div>
               </div>
             </motion.div>
@@ -160,7 +162,7 @@ export default function AboutPage() {
 
         {/* Tech Stack Grid */}
         <section className="mb-24">
-          <SectionHeader title="Tools & Technologies" />
+          <SectionHeader title="High-Leverage Stack" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* JavaScript */}
             <TechCard
@@ -203,19 +205,19 @@ export default function AboutPage() {
 
         {/* Experience Section */}
         <section className="mb-24">
-          <SectionHeader title="Experience" />
+          <SectionHeader title="The Track Record" />
           <div className="space-y-6">
             <ExperienceCard
-              role="Freelance Developer"
-              company="Self Employed"
+              role="Fractional Engineer"
+              company="Consultant / Self-Employed"
               date="2023 - Present"
-              desc="Building high-converting landing pages, e-commerce dashboards, and custom web applications for international clients."
+              desc="Delivered 5+ high-performance web products for international clients. Reduced load times by avg. 40% and improved mobile conversion rates through responsive architectural overhauls."
             />
             <ExperienceCard
               role="Frontend Intern"
               company="Tech Studio Academy"
               date="2022 - 2023"
-              desc="Collaborated with senior engineers to build responsive UIs, optimized page load times, and implemented new features using React."
+              desc="Integrated into a high-velocity agile team. Shipped critical UI components for the core product, reducing technical debt and improving maintainability."
             />
           </div>
         </section>

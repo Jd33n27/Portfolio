@@ -7,8 +7,7 @@ export const config = {
 export default function handler(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    // You can pass ?title=MyProject in the URL to make it dynamic
-    const title = searchParams.get('title') || 'My Portfolio';
+    const title = searchParams.get('title') || 'Building Digital Assets That Scale';
 
     return new ImageResponse(
       (
@@ -18,14 +17,66 @@ export default function handler(request: Request) {
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+            alignItems: 'flex-start', // Left align looks more premium/editorial
             justifyContent: 'center',
-            backgroundColor: '#034694',
-            color: 'white',
+            backgroundColor: '#020617', // Your Dark Theme Background
+            padding: '80px',
+            fontFamily: 'sans-serif',
           }}
         >
-          <div style={{ fontSize: 60, fontWeight: 'bold' }}>Musa Jamaldeen</div>
-          <div style={{ fontSize: 30, marginTop: 20 }}>{title}</div>
+          {/* Status Pill on the Image */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              backgroundColor: 'rgba(3, 70, 148, 0.2)', // Chelsea Blue Tint
+              border: '1px solid #034694',
+              borderRadius: '50px',
+              padding: '10px 25px',
+              marginBottom: '40px',
+            }}
+          >
+            <div
+              style={{
+                width: '15px',
+                height: '15px',
+                borderRadius: '50%',
+                backgroundColor: '#22c55e', // Green Dot
+                marginRight: '15px',
+              }}
+            />
+            <span style={{ color: '#ffffff', fontSize: 24, letterSpacing: '1px' }}>
+              AVAILABLE FOR NEW PROJECTS
+            </span>
+          </div>
+
+          {/* Name as Authority */}
+          <div style={{ 
+            fontSize: 40, 
+            color: '#64748b', // Muted text for hierarchy
+            marginBottom: 20,
+            textTransform: 'uppercase',
+            letterSpacing: '4px',
+            fontWeight: 700
+          }}>
+            Musa Jamaldeen
+          </div>
+
+          {/* The Hook (Title) */}
+          <div style={{ 
+            fontSize: 80, 
+            fontWeight: 900, 
+            color: 'white', 
+            lineHeight: 1.1,
+            marginBottom: 20,
+          }}>
+            {title}
+          </div>
+
+          {/* The Sub-Hook */}
+          <div style={{ fontSize: 30, color: '#94a3b8', maxWidth: '800px' }}>
+            Frontend Engineering • React Architecture • High-Performance Systems
+          </div>
         </div>
       ),
       {

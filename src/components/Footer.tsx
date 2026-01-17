@@ -59,7 +59,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const animatedText = useTypewriter(
-    ["extraordinary.", "impactful.", "scalable.", "intuitive.", "memorable."],
+    ["Profitable.", "Scalable.", "Fast.", "Secure."],
     100, // Typing speed
     50, // Deleting speed
     2000 // Pause before deleting
@@ -77,38 +77,37 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-5 h-24 md:h-auto">
-              Let's build something <br />
+              Make it <br />
               <span className="text-white/40">
                 {animatedText}
                 <span className="animate-pulse text-chelsea">|</span>
               </span>
             </h2>
             <p className="text-white/60 mx-auto text-lg md:max-w-xl mb-12 text-wrap text-center">
-              I'm always excited to collaborate on innovative and exciting
-              projects!
+              You have a vision. I have the engineering. Let's execute.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-2xl mx-auto mb-10">
               {/* Email Block */}
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col items-center justify-center group cursor-pointer">
                 <div className="flex items-center gap-3 mb-2">
-                  <Mail className="w-7 h-7 text-white" />
+                  <Mail className="w-7 h-7 text-white group-hover:text-chelsea transition-colors" />
                   <h3 className="font-bold text-2xl text-white">Email</h3>
                 </div>
-                <p className="text-gray-200 text-lg hover:text-white transition-colors duration-300">
+                <a href="mailto:musajamaldeen627@gmail.com" className="text-gray-200 text-lg hover:text-white transition-colors duration-300">
                   musajamaldeen627@gmail.com
-                </p>
+                </a>
               </div>
 
               {/* Phone Block */}
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col items-center justify-center group cursor-pointer">
                 <div className="flex items-center gap-3 mb-2">
-                  <Phone className="w-7 h-7 text-white" />
+                  <Phone className="w-7 h-7 text-white group-hover:text-chelsea transition-colors" />
                   <h3 className="font-bold text-2xl text-white">Phone</h3>
                 </div>
-                <p className="text-gray-200 text-lg hover:text-white transition-colors duration-300">
+                <a href="tel:+2348077127000" className="text-gray-200 text-lg hover:text-white transition-colors duration-300">
                   +234 807 712 7000
-                </p>
+                </a>
               </div>
             </div>
           </motion.div>
@@ -122,7 +121,7 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="pt-5 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40"
         >
-          <div>&copy; {currentYear} Musa Jamaldeen. All rights reserved.</div>
+          <div>&copy; {currentYear} Musa Jamaldeen. Built for Speed.</div>
 
           <div className="flex items-center gap-6">
             <span className="hover:text-white transition-colors cursor-pointer">
