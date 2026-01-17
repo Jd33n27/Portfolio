@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Folder } from "lucide-react";
+import { Github, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -11,50 +12,68 @@ import {
 
 const projects = [
   {
-    title: "E-Commerce Dashboard",
+    title: "Portfolio System",
+    category: "React / Vite",
     description:
-      "A comprehensive dashboard for managing products, orders, and analytics with real-time data visualization.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-    links: { demo: "#", github: "#" },
-    image: "bg-gradient-to-br from-purple-500 to-indigo-600",
+      "The high-performance application you are looking at right now. Built for speed, SEO, and business conversion using modern React architecture.",
+    tags: ["React", "TypeScript", "Tailwind v4", "Framer Motion"],
+    links: { demo: "/", github: "https://github.com/Jd33n27" },
+    slug: "portfolio-v2",
+    image: "bg-linear-to-br from-slate-900 to-slate-800", // Placeholder until screenshot
   },
   {
-    title: "Fintech Mobile App",
+    title: "Digital Identity Hub",
+    category: "UI Component",
     description:
-      "A seamless payment integration platform allowing users to transfer funds and manage savings goals.",
-    tags: ["React Native", "Redux", "Node.js"],
-    links: { demo: "#", github: "#" },
-    image: "bg-gradient-to-br from-blue-500 to-cyan-400",
+      "A centralized bio-link aggregator designed for mobile-first social conversion. Aggregates cross-platform presence into a single entry point.",
+    tags: ["HTML5", "CSS3", "Responsive Design"],
+    links: { demo: "#", github: "https://github.com/Jd33n27/Social-links-profile" },
+    slug: "social-links",
+    image: "bg-linear-to-br from-green-900 to-emerald-900", 
   },
   {
-    title: "SaaS Landing Page",
+    title: "High-CTR Content Card",
+    category: "Frontend UI",
     description:
-      "High-performance landing page with scroll animations, pricing tables, and newsletter integration.",
-    tags: ["React", "Framer Motion", "Shadcn UI"],
-    links: { demo: "#", github: "#" },
-    image: "bg-gradient-to-br from-orange-400 to-rose-500",
+      "Optimized blog preview component focusing on visual hierarchy and click-through rates. Semantic structure ensures maximum accessibility.",
+    tags: ["Semantic HTML", "CSS Flexbox", "Typographic Scale"],
+    links: { demo: "#", github: "https://github.com/Jd33n27/BLOG-PREVIEW-CARD" },
+    slug: "blog-preview",
+    image: "bg-linear-to-br from-yellow-900 to-amber-900",
   },
 ];
 
 export const Projects = () => {
   return (
     <section className="py-24 bg-transparent relative" id="projects">
-      <div className="max-w-6xl px-6">
-        {/* Section Header */}
+      <div className="max-w-6xl px-6 mx-auto">
+        {/* Section Header - Honest & Direct */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6"
         >
-          <h2 className="text-3xl md:text-4xl text-center font-bold text-white">
-            Projects
-          </h2>
-          <div className="w-20 h-1.5 bg-chelsea rounded-full" />
+          <div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Core Projects
+            </h2>
+            <div className="w-20 h-1.5 bg-chelsea rounded-full mb-4" />
+            <p className="text-white/60 max-w-xl text-lg">
+              Showcasing my journey in building 
+              <span className="text-white font-medium"> precise, accessible, and responsive</span> interfaces.
+            </p>
+          </div>
+          
+          <Link to="/projects">
+            <Button variant="ghost" className="text-white hover:text-chelsea group">
+              View All Repos <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </motion.div>
 
-        {/* The Grid: 1 col on mobile, 2 on tablet, 3 on desktop */}
+        {/* The Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
@@ -64,55 +83,57 @@ export const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{
-                scale: 1.05, // Scales the card up by 5%
-                transition: { duration: 0.2 }, // Makes the hover snap quickly
+                scale: 1.02, 
+                transition: { duration: 0.2 },
               }}
+              className="h-full"
             >
-              <Card className="glass glass-hover w-[90%] overflow-hidden group transition-colors duration-300 h-full flex flex-col mx-auto">
+              <Card className="glass glass-hover w-full overflow-hidden group transition-colors duration-300 h-full flex flex-col border-white/5">
                 {/* Project Image Area */}
-                <div
-                  className={`h-48 w-full ${project.image} relative overflow-hidden`}
-                >
-                  {/* Overlay that appears on hover */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                    <Button
-                      size="icon"
-                      variant="secondary"
-                      className="rounded-full"
-                    >
-                      <Github className="w-5 h-5" />
-                    </Button>
-                    <Button
-                      size="icon"
-                      className="rounded-full bg-chelsea hover:bg-chelsea-hover"
-                    >
-                      <ExternalLink className="w-5 h-5 text-white" />
-                    </Button>
+                <div className={`h-48 w-full ${project.image} relative overflow-hidden group`}>
+                   {/* Gradient Overlay */}
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                   
+                   {/* Hover Actions */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-[2px]">
+                    <a href={project.links.github} target="_blank" rel="noopener noreferrer">
+                        <Button
+                        size="icon"
+                        variant="secondary"
+                        className="rounded-full bg-white text-black hover:bg-white/90"
+                        >
+                        <Github className="w-5 h-5" />
+                        </Button>
+                    </a>
                   </div>
                 </div>
 
-                <CardHeader>
-                  <CardTitle className="text-white text-xl flex items-center gap-2">
-                    <Folder className="w-4 h-4 text-gray-200" />
-                    {project.title}
-                  </CardTitle>
+                <CardHeader className="pb-2">
+                    <div className="flex justify-between items-start">
+                        <CardTitle className="text-white text-xl font-bold">
+                            {project.title}
+                        </CardTitle>
+                        <span className="text-[10px] uppercase tracking-wider font-bold text-chelsea bg-chelsea/10 px-2 py-1 rounded-sm border border-chelsea/20">
+                            {project.category}
+                        </span>
+                    </div>
                 </CardHeader>
 
-                <CardContent className="flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-medium px-2.5 py-1 rounded-md glass glass-hover text-white/70"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </CardContent>
-
-                <CardContent className="grow">
-                  <CardDescription className="text-gray-400 leading-relaxed">
+                <CardContent className="grow flex flex-col gap-4">
+                  <CardDescription className="text-gray-400 leading-relaxed text-sm">
                     {project.description}
                   </CardDescription>
+                  
+                  <div className="flex flex-wrap gap-2 mt-auto pt-4">
+                    {project.tags.map((tag) => (
+                        <span
+                        key={tag}
+                        className="text-xs font-medium px-2 py-1 rounded-md bg-white/5 border border-white/5 text-white/50"
+                        >
+                        {tag}
+                        </span>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>

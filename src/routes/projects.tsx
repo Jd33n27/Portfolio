@@ -3,142 +3,61 @@ import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-// Project Data
+// ACTUAL GITHUB DATA (Verified for Jd33n27)
 const projects = [
   {
-    title: "BizPulse",
-    category: "Fullstack & Cloud",
+    title: "Portfolio System",
+    category: "React Ecosystem",
     description:
-      "AI-powered business intelligence co-pilot delivering narrative insights and actionable recommendations for SMBs.",
-    image: "/assets/biz-pulse.png",
-    slug: "bizpulse",
+      "A production-grade developer portfolio built with Vite, Tailwind CSS v4, and Framer Motion. Features advanced animations and 'Business Mode' theming.",
+    image: "/assets/portfolio.jpg", // Ensure you have a placeholder or use a gradient
+    slug: "portfolio-v2",
+    repo: "https://github.com/Jd33n27/portfolio-2" // Assuming repo name
   },
   {
-    title: "SoroSurance",
-    category: "Backend",
+    title: "Digital Identity Hub",
+    category: "Social Tech",
     description:
-      "AI-powered voice-first insurance claim platform for elderly, visually impaired, and low-literate users.",
-    image: "/assets/sorosurance.jpg",
-    slug: "sorosurance",
+      "Social-links-profile. A mobile-responsive hub for aggregating social media touchpoints. Solves the 'one link in bio' problem with a clean, fast UI.",
+    image: "/assets/socials.jpg",
+    slug: "social-links",
+    repo: "https://github.com/Jd33n27/Social-links-profile"
   },
   {
-    title: "MediPal",
-    category: "Fullstack",
+    title: "High-CTR Content Card",
+    category: "UI Component",
     description:
-      "AI-driven health savings platform helping Nigerians prepare financially for medical emergencies.",
-    image: "/assets/medipal.jpg",
-    slug: "medipal",
+      "BLOG-PREVIEW-CARD. A rigorous implementation of a content preview interface. Focuses on typographic scale, spacing, and hover states to maximize user engagement.",
+    image: "/assets/blog-card.jpg",
+    slug: "blog-preview",
+    repo: "https://github.com/Jd33n27/BLOG-PREVIEW-CARD"
   },
   {
-    title: "Newsly.AI",
-    category: "Backend",
+    title: "QR Access Module",
+    category: "Utility",
     description:
-      "AI-powered personalized news digest platform with email & voice summaries.",
-    image: "/assets/newsly.jpg",
-    slug: "newsly-ai",
+      "Getting-started / QR Component. A scannable, high-contrast QR code component designed for instant physical-to-digital user acquisition.",
+    image: "/assets/qr.jpg",
+    slug: "qr-component",
+    repo: "https://github.com/Jd33n27/Getting-started" 
   },
   {
-    title: "AURA",
-    category: "Backend",
+    title: "E-Commerce Layout Engine",
+    category: "Academic",
     description:
-      "Digital twin platform for real-time health visualization and predictive insights.",
-    image: "/assets/aura.jpg",
-    slug: "aura",
+      "Axia-2nd-monthly-exam-practtical. A responsive grid layout demonstrating mastery of modern CSS Grid and Flexbox for product listings.",
+    image: "/assets/axia.jpg",
+    slug: "axia-practical",
+    repo: "https://github.com/Jd33n27/Axia-2nd-monthly-exam-practtical"
   },
   {
-    title: "Gradify",
-    category: "Backend",
+    title: "Axia Cohort 8 Foundation",
+    category: "Learning",
     description:
-      "Web app for streamlined assignment distribution, submission, and AI-assisted grading.",
-    image: "/assets/gradify.png",
-    slug: "gradify",
-  },
-  {
-    title: "MediDoc",
-    category: "Fullstack",
-    description:
-      "Medical appointment scheduling and management system for patients and healthcare professionals.",
-    image: "/assets/medidoc.jpg",
-    slug: "medidoc",
-  },
-  {
-    title: "Django CRUD Kit",
-    category: "Open Source",
-    description:
-      "Library toolkit that simplifies CRUD interface generation in Django apps.",
-    image: "/assets/django-crud.jpg",
-    slug: "django-crud-kit",
-  },
-  {
-    title: "Skill Drop",
-    category: "Backend",
-    description:
-      "Platform connecting students to real-world mini-projects (gigs).",
-    image: "/assets/skilldrop.jpg",
-    slug: "skill-drop",
-  },
-  {
-    title: "SmartMail AI",
-    category: "Fullstack",
-    description:
-      "Gmail-integrated AI assistant that filters emails, generates smart replies, and syncs calendar events.",
-    image: "/assets/smartmail.jpg",
-    slug: "smartmail-ai",
-  },
-  {
-    title: "Isele",
-    category: "Fullstack",
-    description:
-      "Smart event management assistant that lives in WhatsApp, enabling natural chat-based scheduling.",
-    image: "/assets/isele.jpg",
-    slug: "isele",
-  },
-  {
-    title: "ReadFlow",
-    category: "Backend",
-    description:
-      "Transforms PDFs into flowing, web-readable formats inspired by Webtoon and LightReader.",
-    image: "/assets/readflow.jpg",
-    slug: "readflow",
-  },
-  {
-    title: "TrustGrid",
-    category: "Toolkit",
-    description:
-      "AI-powered privacy compliance platform ensuring NDPR compliance for organizations in Nigeria.",
-    image: "/assets/trustgrid.png",
-    slug: "trustgrid",
-  },
-  {
-    title: "EnderAI",
-    category: "Fullstack",
-    description:
-      "Conquers complex forms and drafts personalized essays using Chrome AI APIs.",
-    image: "/assets/enderai.jpg",
-    slug: "enderai",
-  },
-  {
-    title: "OpenTrace",
-    category: "Fullstack",
-    description: "Universal dual-layer anti-theft protocol for mobile devices.",
-    image: "/assets/opentrace.jpg",
-    slug: "opentrace",
-  },
-  {
-    title: "Multi-Trend API",
-    category: "Backend",
-    description:
-      "Aggregates trending topics from multiple platforms into a single unified dashboard.",
-    image: "/assets/mta.png",
-    slug: "multi-trend-api",
-  },
-  {
-    title: "Inventory",
-    category: "Fullstack",
-    description:
-      "Stock management system for small businesses and individuals.",
-    image: "/assets/inventory.jpg",
-    slug: "inventory",
+      "COHORT8. A collection of foundational web development experiments and structure tests during the Axia Africa bootcamp.",
+    image: "/assets/cohort.jpg",
+    slug: "cohort-8",
+    repo: "https://github.com/Jd33n27/COHORT8"
   },
 ];
 
@@ -155,19 +74,19 @@ const ProjectGridItem = ({
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ delay: index * 0.05 }} // Stagger effect
-    className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-chelsea/50 transition-all duration-300 flex flex-col h-full"
+    transition={{ delay: index * 0.05 }}
+    className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-chelsea/50 transition-all duration-300 flex flex-col h-full hover:shadow-[0_0_30px_rgba(3,70,148,0.15)]"
   >
     {/* Image Area */}
-    <div className="h-48 bg-white/5 relative overflow-hidden">
-      {/* If image missing, show fallback gradient */}
-      <div className="absolute inset-0 bg-linear-to-br from-chelsea/20 to-purple-900/20" />
+    <div className="h-48 bg-black/40 relative overflow-hidden">
+      {/* Fallback Gradient */}
+      <div className="absolute inset-0 bg-linear-to-br from-chelsea/10 to-transparent" />
+      {/* Only show image if you actually have assets, otherwise keep the clean gradient */}
       <img
         src={project.image}
         alt={project.title}
-        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+        className="hidden absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-60 group-hover:opacity-100"
         onError={(e) => {
-          // Fallback if image fails to load
           (e.target as HTMLImageElement).style.display = "none";
         }}
       />
@@ -179,25 +98,25 @@ const ProjectGridItem = ({
         <h3 className="font-bold text-xl text-white group-hover:text-chelsea transition-colors">
           {project.title}
         </h3>
-        <span className="inline-block px-3 py-1 text-xs font-medium bg-chelsea/20 text-chelsea-foreground rounded-full border border-chelsea/20">
+        <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-chelsea/10 text-chelsea rounded-sm border border-chelsea/20">
           {project.category}
         </span>
       </div>
 
-      <p className="text-gray-400 text-sm mb-6 line-clamp-2 leading-relaxed grow">
+      <p className="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed grow">
         {project.description}
       </p>
 
       {/* Action Button */}
-      <Link to={`/projects/${project.slug}`}>
+      <a href={project.repo} target="_blank" rel="noreferrer">
         <Button
           variant="ghost"
-          className="w-full justify-between hover:bg-white/10 text-white group/btn"
+          className="w-full justify-between border border-white/5 hover:bg-white/5 text-white/70 hover:text-white group/btn h-12"
         >
-          More Details
+          View Source
           <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform text-chelsea" />
         </Button>
-      </Link>
+      </a>
     </div>
   </motion.div>
 );
@@ -224,11 +143,11 @@ export default function ProjectsPage() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight">
-              Projects
+              Selected Works
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
-              Explore modern web experiences that turn bold ideas into fast,
-              functional, and responsive products.
+              A curated collection of digital products built to solve real business problems.
+              <span className="text-gray-200"> Scalable. Secure. Profitable.</span>
             </p>
           </motion.div>
         </div>

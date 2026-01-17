@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Code2, Layers, Zap, Braces } from "lucide-react"; // Added Braces for TS
+import { ArrowRight, Code2, Layers, Zap, Braces, CheckCircle2 } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
 import { useRef } from "react";
 
@@ -140,26 +140,47 @@ export const Hero = () => {
           <span className="text-white/90 font-medium"> No bloat. No jargon. Just results.</span>
         </motion.p>
 
-        {/* Buttons - High Contrast CTA */}
+        {/* Buttons - High Contrast CTA (Mafia Offer) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-5 justify-center items-center pointer-events-auto"
+          className="flex flex-col sm:flex-row gap-5 justify-center items-center pointer-events-auto mb-12"
         >
           <Button
             size="lg"
             className="bg-white text-chelsea hover:bg-white/90 text-lg h-14 px-10 rounded-full font-bold shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all hover:scale-105"
           >
-            View My Work <ArrowRight className="ml-2 w-5 h-5" />
+            Get Free Code Audit <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
           <Button
             size="lg"
             variant="ghost"
             className="text-white text-lg h-14 px-10 rounded-full border border-white/20 hover:bg-white/10"
           >
-            Book a Call
+            View Case Studies
           </Button>
+        </motion.div>
+
+        {/* Social Proof Section (New) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="flex flex-wrap justify-center gap-6 md:gap-12 text-white/40 pointer-events-auto"
+        >
+            <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-green-400" />
+                <span className="text-sm font-medium">100% On-Time Delivery</span>
+            </div>
+            <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-green-400" />
+                <span className="text-sm font-medium">Next.js Specialists</span>
+            </div>
+            <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-green-400" />
+                <span className="text-sm font-medium">Scalable Architecture</span>
+            </div>
         </motion.div>
       </div>
     </section>

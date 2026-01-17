@@ -7,14 +7,12 @@ import {
   Github,
   Linkedin,
   Mail,
-  Sun,
-  Moon,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
-// Custom Icon for X
+// Custom Icon for X (Twitter)
 const XIcon = ({ className }: { className?: string }) => (
   <svg
     role="img"
@@ -42,12 +40,6 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
-  const [isDark, setIsDark] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    //TODO Add logic here: document.documentElement.classList.toggle('dark')
-  };
 
   const navLinks = [
     { name: "Home", href: "/", icon: <Home className="w-5 h-5" /> },
@@ -94,14 +86,14 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* DESKTOP: LEFT SIDEBAR (Nav + Theme) */}
+      {/* DESKTOP: LEFT SIDEBAR (Nav) */}
       <motion.aside
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 h-[60vh] w-18 flex-col items-center justify-between py-8 rounded-2xl glass glass-hover z-50 border border-white"
+        className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 h-auto py-8 w-18 flex-col items-center gap-8 rounded-2xl glass glass-hover z-50 border border-white"
       >
-        <nav className="flex flex-col gap-8 flex-1 justify-center">
+        <nav className="flex flex-col gap-6 justify-center">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -122,25 +114,6 @@ export const Navbar = () => {
             </Link>
           ))}
         </nav>
-
-        {/* Separator & Theme Toggle */}
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-8 h-px bg-white/20" />
-          <button
-            onClick={toggleTheme}
-            className="p-3 rounded-xl text-white/60 hover:text-white hover:bg-white/10 transition-all duration-300 relative group"
-          >
-            {isDark ? (
-              <Sun className="w-6 h-6" />
-            ) : (
-              <Moon className="w-6 h-6" />
-            )}
-            {/* Tooltip */}
-            <span className="absolute left-14 top-1/2 -translate-y-1/2 glass text-gray-200 text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-sm whitespace-nowrap z-50">
-              {isDark ? "Light Mode" : "Dark Mode"}
-            </span>
-          </button>
-        </div>
       </motion.aside>
 
       {/* DESKTOP: RIGHT SIDEBAR (Socials Only) */}
@@ -176,7 +149,7 @@ export const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm"
       >
-        <div className="glass rounded-full shadow-2xl px-6 py-4 flex items-center justify-between">
+        <div className="glass rounded-full shadow-2xl px-6 py-4 flex items-center justify-around">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -192,19 +165,6 @@ export const Navbar = () => {
               {link.icon}
             </a>
           ))}
-          <div className="w-px h-6 bg-white/20 mx-1" />
-
-          {/* Mobile Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="text-white/60 hover:text-white"
-          >
-            {isDark ? (
-              <Sun className="w-5 h-5" />
-            ) : (
-              <Moon className="w-5 h-5" />
-            )}
-          </button>
         </div>
       </motion.div>
     </>
