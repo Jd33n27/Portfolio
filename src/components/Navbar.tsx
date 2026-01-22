@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Home,
   User,
@@ -10,7 +9,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // Added useLocation
 
 // Custom Icon for X (Twitter)
 const XIcon = ({ className }: { className?: string }) => (
@@ -39,7 +38,8 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 export const Navbar = () => {
-  const [activeSection, setActiveSection] = useState("home");
+  // 1. Get the current location (The Source of Truth)
+  const location = useLocation();
 
   const navLinks = [
     { name: "Home", href: "/", icon: <Home className="w-5 h-5" /> },
@@ -84,6 +84,14 @@ export const Navbar = () => {
     },
   ];
 
+  // 2. Helper function to check if link is active
+  const isActive = (path: string) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(path);
+  };
+
   return (
     <>
       {/* DESKTOP: LEFT SIDEBAR (Nav) */}
@@ -98,12 +106,11 @@ export const Navbar = () => {
             <Link
               key={link.name}
               to={link.href}
-              onClick={() => setActiveSection(link.name.toLowerCase())}
               className={cn(
                 "p-3 rounded-xl transition-all duration-300 relative group",
-                activeSection === link.name.toLowerCase()
+                isActive(link.href)
                   ? "bg-white/20 text-white"
-                  : "text-white/60 hover:text-white hover:bg-white/10"
+                  : "text-white/60 hover:text-white hover:bg-white/10",
               )}
             >
               {link.icon}
@@ -149,21 +156,20 @@ export const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm"
       >
-        <div className="glass blur-in-[0.005px] rounded-full shadow-2xl px-6 py-4 flex items-center justify-around">
+        <div className="glass rounded-full shadow-2xl px-6 py-4 flex items-center justify-around">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
-              onClick={() => setActiveSection(link.name.toLowerCase())}
+              to={link.href}
               className={cn(
-                "flex flex-col items-center gap-1 transition-colors",
-                activeSection === link.name.toLowerCase()
-                  ? "text-white"
-                  : "text-white/60 hover:text-white"
+                "flex flex-col items-center gap-1 transition-colors p-2 rounded-full",
+                isActive(link.href)
+                  ? "text-white bg-white/10"
+                  : "text-white/60 hover:text-white",
               )}
             >
               {link.icon}
-            </a>
+            </Link>
           ))}
         </div>
       </motion.div>

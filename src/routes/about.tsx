@@ -123,7 +123,7 @@ export default function AboutPage() {
                 Musa Jamaldeen
               </h1>
               <div className="text-2xl text-chelsea-light mb-8 font-medium">
-                Fractional Frontend Engineer
+                Frontend Engineer
               </div>
               <div className="space-y-6 text-lg text-gray-300 leading-relaxed max-w-2xl">
                 <p>
@@ -142,19 +142,24 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* Profile Image Area */}
+            {/* Profile Image Area - SECURED */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex justify-center lg:justify-end"
             >
-              <div className="w-64 h-64 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white/5">
-                {/* Placeholder for your actual image */}
-                <div className="absolute inset-0 bg-linear-to-br from-chelsea/20 to-purple-500/20" />
-                <div className="absolute inset-0 flex items-center justify-center text-white/20 font-bold">
-                  [Musa Image]
-                </div>
+              <div 
+                className="w-64 h-64 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 select-none"
+                onContextMenu={(e) => e.preventDefault()}
+              >
+                <div className="absolute inset-0 z-50 bg-transparent" />
+                <img 
+                  src="/img/IMG-20251104-WA0090.jpg" 
+                  alt="Musa Jamaldeen" 
+                  draggable="false"
+                  className="w-full h-full object-cover pointer-events-none select-none"
+                />
               </div>
             </motion.div>
           </div>
@@ -192,7 +197,7 @@ export default function AboutPage() {
             <TechCard
               name="Tailwind"
               color="#06B6D4"
-              iconPath="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
+              iconPath="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565-0.89-2.288-1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
             />
             {/* Firebase */}
             <TechCard
@@ -208,16 +213,16 @@ export default function AboutPage() {
           <SectionHeader title="The Track Record" />
           <div className="space-y-6">
             <ExperienceCard
-              role="Fractional Engineer"
-              company="Consultant / Self-Employed"
+              role="Independent Frontend Engineer"
+              company="Self-Initiated Ventures"
               date="2023 - Present"
-              desc="Delivered 5+ high-performance web products for international clients. Reduced load times by avg. 40% and improved mobile conversion rates through responsive architectural overhauls."
+              desc="Designed and shipped 3+ complete web products including a social commerce prototype (Lily-Shop). Focused on component modularity and API integration."
             />
             <ExperienceCard
-              role="Frontend Intern"
-              company="Tech Studio Academy"
-              date="2022 - 2023"
-              desc="Integrated into a high-velocity agile team. Shipped critical UI components for the core product, reducing technical debt and improving maintainability."
+              role="Academic Team Lead"
+              company="Lagos State University"
+              date="2024 - Present"
+              desc="Leading a 5-person engineering team to architect complex software systems. Managing git workflows, code reviews, and project milestones for high-stakes academic deliverables."
             />
           </div>
         </section>
