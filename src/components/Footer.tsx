@@ -7,7 +7,7 @@ const useTypewriter = (
   words: string[],
   typingSpeed = 150,
   deletingSpeed = 100,
-  pauseDuration = 2000
+  pauseDuration = 2000,
 ) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -22,7 +22,7 @@ const useTypewriter = (
       setDisplayedText((current) =>
         isDeleting
           ? fullText.substring(0, current.length - 1)
-          : fullText.substring(0, current.length + 1)
+          : fullText.substring(0, current.length + 1),
       );
 
       // Speed up when deleting
@@ -62,12 +62,12 @@ export default function Footer() {
     ["Profitable.", "Scalable.", "Fast.", "Secure."],
     100, // Typing speed
     50, // Deleting speed
-    2000 // Pause before deleting
+    2000, // Pause before deleting
   );
 
   return (
     <footer className="relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 pt-20 pb-10">
+      <div className="max-w-6xl mx-auto px-6 pt-20 pb-15">
         {/* Top Section: CTA and Contact Info */}
         <div className="">
           <motion.div
@@ -94,7 +94,10 @@ export default function Footer() {
                   <Mail className="w-7 h-7 text-white group-hover:text-chelsea transition-colors" />
                   <h3 className="font-bold text-2xl text-white">Email</h3>
                 </div>
-                <a href="mailto:musajamaldeen627@gmail.com" className="text-gray-200 text-lg hover:text-white transition-colors duration-300">
+                <a
+                  href="mailto:musajamaldeen627@gmail.com"
+                  className="text-gray-200 text-lg hover:text-white transition-colors duration-300"
+                >
                   musajamaldeen627@gmail.com
                 </a>
               </div>
@@ -105,7 +108,10 @@ export default function Footer() {
                   <Phone className="w-7 h-7 text-white group-hover:text-chelsea transition-colors" />
                   <h3 className="font-bold text-2xl text-white">Phone</h3>
                 </div>
-                <a href="tel:+2348077127000" className="text-gray-200 text-lg hover:text-white transition-colors duration-300">
+                <a
+                  href="tel:+2348077127000"
+                  className="text-gray-200 text-lg hover:text-white transition-colors duration-300"
+                >
                   +234 807 712 7000
                 </a>
               </div>

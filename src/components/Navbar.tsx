@@ -156,7 +156,7 @@ export const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm"
       >
-        <div className="glass rounded-full shadow-2xl px-6 py-4 flex items-center justify-around">
+        <div className="glass blur-[0.005px] rounded-full shadow-2xl px-6 py-4 flex items-center justify-around">
           {navLinks.map((link) => (
             <Link
               key={link.name}
