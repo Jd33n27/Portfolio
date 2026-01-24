@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Link, useLocation } from "react-router-dom"; // Added useLocation
+import { Link, useLocation } from "react-router-dom";
 
 // Custom Icon for X (Twitter)
 const XIcon = ({ className }: { className?: string }) => (
@@ -38,7 +38,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 export const Navbar = () => {
-  // 1. Get the current location (The Source of Truth)
+  // 1. Get the current location
   const location = useLocation();
 
   const navLinks = [
@@ -156,7 +156,7 @@ export const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm"
       >
-        <div className="glass blur-[0.005px] rounded-full shadow-2xl px-6 py-4 flex items-center justify-around">
+        <div className="glass backdrop-blur-xl rounded-full shadow-2xl px-6 py-4 flex items-center justify-around">
           {navLinks.map((link) => (
             <Link
               key={link.name}
