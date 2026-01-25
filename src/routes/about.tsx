@@ -1,6 +1,6 @@
 import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Reusable Components
@@ -53,43 +53,59 @@ const TechCard = ({
   </motion.div>
 );
 
-const ExperienceCard = ({
-  role,
-  company,
-  date,
-  desc,
+// Renamed from ExperienceCard to ValueAssetCard to fit Hormozi framing
+const ValueAssetCard = ({
+  title,
+  category,
+  repoUrl,
+  outcome,
 }: {
-  role: string;
-  company: string;
-  date: string;
-  desc: string;
+  title: string;
+  category: string;
+  repoUrl: string;
+  outcome: string;
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-chelsea/30 transition-all duration-300 group"
+    className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-chelsea/30 transition-all duration-300 group relative overflow-hidden"
   >
-    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-      <h3 className="text-xl font-bold text-white group-hover:text-chelsea transition-colors">
-        {role}
-      </h3>
-      <span className="text-gray-400 text-sm mt-1 sm:mt-0 bg-white/5 px-3 py-1 rounded-full">
-        {date}
-      </span>
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+      <div>
+        <h3 className="text-xl font-bold text-white group-hover:text-chelsea transition-colors flex items-center gap-2">
+          {title}
+          <a
+            href={repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <ExternalLink className="w-4 h-4 text-chelsea" />
+          </a>
+        </h3>
+        <span className="text-chelsea-light text-xs font-bold uppercase tracking-wider mt-1 block">
+          {category}
+        </span>
+      </div>
     </div>
-    <h4 className="text-chelsea-light mb-3 font-medium">{company}</h4>
-    <p className="text-gray-300 leading-relaxed">{desc}</p>
+
+    <div className="space-y-3">
+      <div>
+        <span className="text-gray-200 text-xs font-bold uppercase">
+          Description
+        </span>
+        <p className="text-gray-400 text-sm leading-relaxed mb-2">{outcome}</p>
+      </div>
+    </div>
   </motion.div>
 );
-
-// Main Page Component
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen pt-24 px-4 pb-20 md:px-32 lg:px-48">
-      <Seo 
-        title="About Musa | The Value Equation" 
+      <Seo
+        title="About Musa Jamaldeen"
         description="I don't just write code. I build revenue-generating assets for businesses using React and Next.js."
       />
       <div className="max-w-6xl mx-auto">
@@ -127,17 +143,37 @@ export default function AboutPage() {
               </div>
               <div className="space-y-6 text-lg text-gray-300 leading-relaxed max-w-2xl">
                 <p>
-                  Most developers write code. <span className="text-white font-bold">I engineer assets.</span>
+                  Most developers focus on only writing code.{" "}
+                  <span className="text-white font-bold">
+                    I focus on building frontend systems that drive real
+                    business outcomes while writing code.
+                  </span>
                 </p>
                 <p>
-                  I don't care about "clean code" unless it drives revenue, retention, or speed. 
-                  My job is simple: I drop into your business, identify the bottlenecks in your 
-                  frontend architecture, and build systems that remove them.
+                  Focusing on only writing code matters, only when it improves
+                  speed, retention, or conversion. My role is to identify
+                  frontend bottlenecks and engineer solutions that help products
+                  scale faster and convert better.
                 </p>
                 <p>
-                  If you want a pixel-pusher, look elsewhere. If you want a partner who 
-                  understands that <span className="text-white font-bold">Latency = Lost Revenue</span>, 
-                  then we should talk.
+                  If you want a frontend partner who understands that{" "}
+                  <span className="text-white font-bold">
+                    Latency = Lost Revenue
+                  </span>
+                  , let’s talk.
+                </p>
+
+                <p>
+                  If you want a frontend partner who understands that{" "}
+                  <span className="text-white font-bold">
+                    Performance = Profits
+                  </span>
+                  , let’s talk.
+                </p>
+
+                <p>
+                  If you want aesthetics without outcomes,{" "}
+                  <span className="text-white font-bold">I’m not a fit.</span>
                 </p>
               </div>
             </motion.div>
@@ -149,14 +185,14 @@ export default function AboutPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex justify-center lg:justify-end"
             >
-              <div 
+              <div
                 className="w-64 h-64 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 select-none"
                 onContextMenu={(e) => e.preventDefault()}
               >
                 <div className="absolute inset-0 z-50 bg-transparent" />
-                <img 
-                  src="/img/IMG-20251104-WA0090.jpg" 
-                  alt="Musa Jamaldeen" 
+                <img
+                  src="/img/IMG-20251104-WA0090.jpg"
+                  alt="Musa Jamaldeen"
                   draggable="false"
                   className="w-full h-full object-cover pointer-events-none select-none"
                 />
@@ -208,21 +244,50 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Experience Section */}
+        {/* Proof of Work Section (Formerly Experience) */}
         <section className="mb-24">
-          <SectionHeader title="The Track Record" />
+          <SectionHeader title="Featured Projects" />
           <div className="space-y-6">
-            <ExperienceCard
-              role="Independent Frontend Engineer"
-              company="Self-Initiated Ventures"
-              date="2023 - Present"
-              desc="Designed and shipped 3+ complete web products including a social commerce prototype (Lily-Shop). Focused on component modularity and API integration."
+            <ValueAssetCard
+              title="Programming Quiz"
+              category="Ed-Tech UI"
+              repoUrl="https://github.com/Jd33n27/CSC-218-pq"
+              outcome="A digital compilation of programming excercises"
             />
-            <ExperienceCard
-              role="Academic Team Lead"
-              company="Lagos State University"
-              date="2024 - Present"
-              desc="Leading a 5-person engineering team to architect complex software systems. Managing git workflows, code reviews, and project milestones for high-stakes academic deliverables."
+
+            <ValueAssetCard
+              title="Data Visualization Tool"
+              category="Data Analysis UI"
+              repoUrl="https://github.com/Jd33n27/python-data-visualizer-for-research-project"
+              outcome="A tool for building interactive data visualization interfaces"
+            />
+
+            {/* <ValueAssetCard
+              title="React Intro Form"
+              category="Interactive UI"
+              repoUrl="https://github.com/Jd33n27/React-intro-form-component"
+              outcome="A responsive sign-up form interface built with React. It implements client-side validation and state management to handle user inputs, based on the popular Frontend Mentor challenge."
+            /> */}
+
+            <ValueAssetCard
+              title="React Learn"
+              category="Ed-Tech UI"
+              repoUrl="https://github.com/Jd33n27/Axia-2nd-Project"
+              outcome="An edtech dashboard layout"
+            />
+
+            <ValueAssetCard
+              title="Color Flipper V2"
+              category="Interactive UI"
+              repoUrl="https://github.com/Jd33n27/color-flipper-v2"
+              outcome="An interactive JavaScript tool that dynamically changes the background color of the viewport. As a 'v2,' it includes A Modernized UI and advanced features like Hex code generation alongside standard color switching."
+            />
+
+            <ValueAssetCard
+              title="CGPA Calculator"
+              category="Ed-Tech UI"
+              repoUrl="https://github.com/Jd33n27/java_school_project"
+              outcome="An academic Java application designed to demonstrate Object-Oriented Programming (OOP) concepts. This is a console-based or simple GUI tool created for a coursework assessment."
             />
           </div>
         </section>
