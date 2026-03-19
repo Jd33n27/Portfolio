@@ -12,34 +12,44 @@ import {
 
 const projects = [
   {
-    title: "Portfolio System",
-    category: "React / Vite",
+    title: "Lily-Shops",
+    category: "E-commerce Platform",
     description:
-      "The high-performance application you are looking at right now. Built for speed, SEO, and business conversion using modern React architecture.",
-    tags: ["React", "TypeScript", "Tailwind v4", "Framer Motion"],
-    links: { demo: "/", github: "https://github.com/Jd33n27" },
-    slug: "portfolio-v2",
-    image: "bg-linear-to-br from-slate-900 to-slate-800", // Placeholder until screenshot
+      "Developed a full-featured e-commerce frontend using React and integrated complex state management for shopping carts. Debugged and optimized core features to ensure a seamless checkout experience and responsive layout across all devices.",
+    tags: ["React", "State Management", "Responsive Design"],
+    links: { demo: "#", github: "#" },
+    slug: "lily-shops",
+    image: "bg-linear-to-br from-slate-900 to-slate-800", 
   },
   {
-    title: "Digital Identity Hub",
-    category: "UI Component",
+    title: "FlowStack",
+    category: "User Management System",
     description:
-      "A centralized bio-link aggregator designed for mobile-first social conversion. Aggregates cross-platform presence into a single entry point.",
-    tags: ["HTML5", "CSS3", "Responsive Design"],
-    links: { demo: "#", github: "https://github.com/Jd33n27/Social-links-profile" },
-    slug: "social-links",
+      "Engineered a secure user authentication flow and dashboard interface. Focused on design consistency and high-performance rendering to improve user retention.",
+    tags: ["Authentication", "Dashboard", "Performance"],
+    links: { demo: "#", github: "#" },
+    slug: "flowstack",
     image: "bg-linear-to-br from-green-900 to-emerald-900", 
   },
   {
-    title: "High-CTR Content Card",
-    category: "Frontend UI",
+    title: "Tax Clarity NG",
+    category: "Fintech Application",
     description:
-      "Optimized blog preview component focusing on visual hierarchy and click-through rates. Semantic structure ensures maximum accessibility.",
-    tags: ["Semantic HTML", "CSS Flexbox", "Typographic Scale"],
-    links: { demo: "#", github: "https://github.com/Jd33n27/BLOG-PREVIEW-CARD" },
-    slug: "blog-preview",
+      "Developed a specialized web application to simplify tax calculations and information for the Nigerian market. Focused on a 'clean UI' and accessibility, ensuring complex financial data is digestible for users.",
+    tags: ["UI/UX", "Accessibility", "Web App"],
+    links: { demo: "#", github: "#" },
+    slug: "tax-clarity-ng",
     image: "bg-linear-to-br from-yellow-900 to-amber-900",
+  },
+  {
+    title: "Phantom-clips",
+    category: "Next.js Website",
+    description:
+      "Architected a modern web application using Next.js, leveraging server-side rendering (SSR) for improved SEO and performance. Purchased, configured, and maintained a dedicated server from scratch, handling the full deployment pipeline.",
+    tags: ["Next.js", "SSR", "DevOps"],
+    links: { demo: "#", github: "#" },
+    slug: "phantom-clips",
+    image: "bg-linear-to-br from-purple-900 to-fuchsia-900",
   },
 ];
 

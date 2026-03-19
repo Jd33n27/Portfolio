@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Home,
   User,
@@ -99,7 +100,7 @@ export const Navbar = () => {
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 h-auto py-8 w-18 flex-col items-center gap-8 rounded-2xl glass glass-hover z-50 border border-white"
+        className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 h-[60vh] py-8 w-18 flex-col items-center justify-center gap-8 rounded-2xl glass glass-hover z-50 border border-white"
       >
         <nav className="flex flex-col gap-6 justify-center">
           {navLinks.map((link) => (
