@@ -1,7 +1,8 @@
 import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 // Reusable Components
 
@@ -10,7 +11,7 @@ const SectionHeader = ({ title }: { title: string }) => (
     initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
-    className="text-3xl font-bold mb-8 text-white border-l-4 border-chelsea pl-4"
+    className="text-3xl font-bold mb-8 text-foreground border-l-4 border-chelsea pl-4"
   >
     {title}
   </motion.h2>
@@ -29,12 +30,11 @@ const TechCard = ({
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
-    className="bg-white/5 border border-white/10 rounded-xl p-4 transition-all duration-300 group cursor-pointer"
+    className="bg-card border border-border rounded-xl p-4 transition-all duration-300 group cursor-pointer hover:bg-accent"
   >
     <div className="flex items-center gap-3">
       <div
-        className="p-2 rounded-lg bg-white/5 group-hover:scale-110 transition-transform duration-300"
+        className="p-2 rounded-lg bg-accent group-hover:scale-110 transition-transform duration-300"
         style={{ color: color }}
       >
         <svg
@@ -46,60 +46,87 @@ const TechCard = ({
           <path d={iconPath} />
         </svg>
       </div>
-      <span className="font-medium text-lg text-gray-200 group-hover:text-white">
+      <span className="font-medium text-lg text-muted-foreground group-hover:text-foreground">
         {name}
       </span>
     </div>
   </motion.div>
 );
 
-// Renamed from ExperienceCard to ValueAssetCard to fit Hormozi framing
-const ValueAssetCard = ({
-  title,
-  category,
-  repoUrl,
-  outcome,
-}: {
-  title: string;
-  category: string;
-  repoUrl: string;
-  outcome: string;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-chelsea/30 transition-all duration-300 group relative overflow-hidden"
-  >
-    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-      <div>
-        <h3 className="text-xl font-bold text-white group-hover:text-chelsea transition-colors flex items-center gap-2">
-          {title}
-          <a
-            href={repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <ExternalLink className="w-4 h-4 text-chelsea" />
-          </a>
-        </h3>
-        <span className="text-chelsea-light text-xs font-bold uppercase tracking-wider mt-1 block">
-          {category}
-        </span>
-      </div>
-    </div>
+const featuredProjects = [
+    {
+      title: "Programming Quiz",
+      category: "Ed-Tech UI",
+      description: "A digital compilation of programming excercises",
+      repo: "https://github.com/Jd33n27/CSC-218-pq",
+      image: "bg-gradient-to-br from-slate-900 to-slate-800",
+    },
+    {
+      title: "Data Visualization Tool",
+      category: "Data Analysis UI",
+      description: "A tool for building interactive data visualization interfaces",
+      repo: "https://github.com/Jd33n27/python-data-visualizer-for-research-project",
+      image: "bg-gradient-to-br from-green-950 to-emerald-950",
+    },
+    {
+      title: "React Learn",
+      category: "Ed-Tech UI",
+      description: "An edtech dashboard layout",
+      repo: "https://github.com/Jd33n27/Axia-2nd-Project",
+      image: "bg-gradient-to-br from-yellow-950 to-amber-950",
+    },
+    {
+      title: "Color Flipper V2",
+      category: "Interactive UI",
+      description: "An interactive JavaScript tool that dynamically changes the background color of the viewport. As a 'v2,' it includes A Modernized UI and advanced features like Hex code generation alongside standard color switching.",
+      repo: "https://github.com/Jd33n27/color-flipper-v2",
+      image: "bg-gradient-to-br from-purple-950 to-fuchsia-950",
+    },
+    {
+      title: "CGPA Calculator",
+      category: "Ed-Tech UI",
+      description: "An academic Java application designed to demonstrate Object-Oriented Programming (OOP) concepts. This is a console-based or simple GUI tool created for a coursework assessment.",
+      repo: "https://github.com/Jd33n27/java_school_project",
+      image: "bg-gradient-to-br from-slate-900 to-slate-800",
+    },
+  ];
 
-    <div className="space-y-3">
-      <div>
-        <span className="text-gray-200 text-xs font-bold uppercase">
-          Description
-        </span>
-        <p className="text-gray-400 text-sm leading-relaxed mb-2">{outcome}</p>
-      </div>
-    </div>
-  </motion.div>
-);
+  const getBentoLayout = (index: number) => {
+    const layoutIndex = index % 4;
+    switch (layoutIndex) {
+      case 0: // Top Left: Square
+        return {
+          wrapper: "md:col-span-2 md:row-span-1 flex-col",
+          content: "p-8 pb-4",
+          imageWrapper: "relative w-full grow min-h-[200px]",
+          mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
+        };
+      case 1: // Top Right: Wide Rectangle
+        return {
+          wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
+          content: "p-8 md:w-[55%] flex flex-col justify-center",
+          imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
+          mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
+        };
+      case 2: // Bottom Left: Wide Rectangle
+        return {
+          wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
+          content: "p-8 md:w-[55%] flex flex-col justify-center",
+          imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
+          mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
+        };
+      case 3: // Bottom Right: Square
+        return {
+          wrapper: "md:col-span-2 md:row-span-1 flex-col",
+          content: "p-8 pb-4",
+          imageWrapper: "relative w-full grow min-h-[200px]",
+          mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
+        };
+      default:
+        return { wrapper: "", content: "", imageWrapper: "", mockup: "" };
+    }
+  };
+
 
 export default function AboutPage() {
   return (
@@ -117,9 +144,9 @@ export default function AboutPage() {
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
           >
-            <div className="p-2 rounded-full bg-white/5 group-hover:bg-chelsea/20">
+            <div className="p-2 rounded-full bg-accent group-hover:bg-chelsea/20">
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             </div>
             Back to Home
@@ -135,16 +162,16 @@ export default function AboutPage() {
               transition={{ duration: 0.5 }}
               className="lg:col-span-2"
             >
-              <h1 className="text-5xl md:text-7xl font-bold mb-4 text-white tracking-tight">
+              <h1 className="text-5xl md:text-7xl font-bold mb-4 text-foreground tracking-tight">
                 Musa Jamaldeen
               </h1>
               <div className="text-2xl text-chelsea-light mb-8 font-medium">
                 Frontend Engineer
               </div>
-              <div className="space-y-6 text-lg text-gray-300 leading-relaxed max-w-2xl">
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
                 <p>
                   Most developers focus on only writing code.{" "}
-                  <span className="text-white font-bold">
+                  <span className="text-foreground font-bold">
                     I focus on building frontend systems that drive real
                     business outcomes while writing code.
                   </span>
@@ -157,7 +184,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   If you want a frontend partner who understands that{" "}
-                  <span className="text-white font-bold">
+                  <span className="text-foreground font-bold">
                     Latency = Lost Revenue
                   </span>
                   , let’s talk.
@@ -165,7 +192,7 @@ export default function AboutPage() {
 
                 <p>
                   If you want a frontend partner who understands that{" "}
-                  <span className="text-white font-bold">
+                  <span className="text-foreground font-bold">
                     Performance = Profits
                   </span>
                   , let’s talk.
@@ -173,7 +200,7 @@ export default function AboutPage() {
 
                 <p>
                   If you want aesthetics without outcomes,{" "}
-                  <span className="text-white font-bold">I’m not a fit.</span>
+                  <span className="text-foreground font-bold">I’m not a fit.</span>
                 </p>
               </div>
             </motion.div>
@@ -186,7 +213,7 @@ export default function AboutPage() {
               className="flex justify-center lg:justify-end"
             >
               <div
-                className="w-64 h-64 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 select-none"
+                className="w-64 h-64 relative rounded-2xl overflow-hidden border border-border shadow-2xl bg-card select-none"
                 onContextMenu={(e) => e.preventDefault()}
               >
                 <div className="absolute inset-0 z-50 bg-transparent" />
@@ -247,49 +274,65 @@ export default function AboutPage() {
         {/* Proof of Work Section (Formerly Experience) */}
         <section className="mb-24">
           <SectionHeader title="Featured Projects" />
-          <div className="space-y-6">
-            <ValueAssetCard
-              title="Programming Quiz"
-              category="Ed-Tech UI"
-              repoUrl="https://github.com/Jd33n27/CSC-218-pq"
-              outcome="A digital compilation of programming excercises"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 auto-rows-auto md:auto-rows-[360px]">
+          {featuredProjects.map((project, index) => {
+            const layout = getBentoLayout(index);
 
-            <ValueAssetCard
-              title="Data Visualization Tool"
-              category="Data Analysis UI"
-              repoUrl="https://github.com/Jd33n27/python-data-visualizer-for-research-project"
-              outcome="A tool for building interactive data visualization interfaces"
-            />
+            return (
+                <motion.article
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`group relative overflow-hidden rounded-[32px] border border-border bg-card flex transition-all duration-500 hover:border-chelsea/30 hover:bg-accent shadow-2xl ${layout.wrapper}`}
+              >
+                {/* Text Content Area */}
+                <div className={`${layout.content} flex flex-col z-10`}>
+                  <div className="flex flex-wrap lg:flex-nowrap justify-between items-start gap-4 mb-4">
+                    <h3 className="text-2xl font-bold text-foreground tracking-tight">
+                      {project.title}
+                    </h3>
+                    <span className="text-[10px] uppercase tracking-wider font-bold text-chelsea bg-chelsea/10 px-3 py-1.5 rounded-full border border-chelsea/20 whitespace-nowrap">
+                      {project.category}
+                    </span>
+                  </div>
+                  
+                  <p className="text-muted-foreground leading-relaxed text-sm mb-6">
+                    {project.description}
+                  </p>
+                  
+                </div>
 
-            {/* <ValueAssetCard
-              title="React Intro Form"
-              category="Interactive UI"
-              repoUrl="https://github.com/Jd33n27/React-intro-form-component"
-              outcome="A responsive sign-up form interface built with React. It implements client-side validation and state management to handle user inputs, based on the popular Frontend Mentor challenge."
-            /> */}
+                {/* UI Masking / Visual Mockup Area */}
+                <div className={`${layout.imageWrapper} overflow-hidden pointer-events-none group-hover:pointer-events-auto`}>
+                  {/* The encapsulated "App Window" bleeding off the edge */}
+                  <div className={`${layout.mockup} ${project.image} border-t border-l border-r border-border flex flex-col transition-transform duration-700 group-hover:scale-[1.02]`}>
+                    {/* Abstract App Header Bar */}
+                    <div className="h-10 border-b border-border flex items-center px-4 gap-2 opacity-40">
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
+                    </div>
+                  </div>
 
-            <ValueAssetCard
-              title="React Learn"
-              category="Ed-Tech UI"
-              repoUrl="https://github.com/Jd33n27/Axia-2nd-Project"
-              outcome="An edtech dashboard layout"
-            />
-
-            <ValueAssetCard
-              title="Color Flipper V2"
-              category="Interactive UI"
-              repoUrl="https://github.com/Jd33n27/color-flipper-v2"
-              outcome="An interactive JavaScript tool that dynamically changes the background color of the viewport. As a 'v2,' it includes A Modernized UI and advanced features like Hex code generation alongside standard color switching."
-            />
-
-            <ValueAssetCard
-              title="CGPA Calculator"
-              category="Ed-Tech UI"
-              repoUrl="https://github.com/Jd33n27/java_school_project"
-              outcome="An academic Java application designed to demonstrate Object-Oriented Programming (OOP) concepts. This is a console-based or simple GUI tool created for a coursework assessment."
-            />
-          </div>
+                  {/* Glass Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[4px] z-20">
+                    <a href={project.repo} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        size="icon"
+                        variant="secondary"
+                        className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 h-12 w-12"
+                      >
+                        <Github className="w-6 h-6" />
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </motion.article>
+            )
+          })}
+        </div>
         </section>
       </div>
     </div>

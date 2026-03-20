@@ -51,28 +51,28 @@ const getBentoLayout = (index: number) => {
   switch (index) {
     case 0: // Top Left: Square
       return {
-        wrapper: "md:col-span-1 md:row-span-1 flex-col",
+        wrapper: "md:col-span-2 md:row-span-1 flex-col",
         content: "p-8 pb-4",
         imageWrapper: "relative w-full grow min-h-[200px]",
         mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
       };
     case 1: // Top Right: Wide Rectangle
       return {
-        wrapper: "md:col-span-2 md:row-span-1 flex-col md:flex-row",
+        wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
         content: "p-8 md:w-[55%] flex flex-col justify-center",
         imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
         mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
       };
     case 2: // Bottom Left: Wide Rectangle
       return {
-        wrapper: "md:col-span-2 md:row-span-1 flex-col md:flex-row",
+        wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
         content: "p-8 md:w-[55%] flex flex-col justify-center",
         imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
         mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
       };
     case 3: // Bottom Right: Square
       return {
-        wrapper: "md:col-span-1 md:row-span-1 flex-col",
+        wrapper: "md:col-span-2 md:row-span-1 flex-col",
         content: "p-8 pb-4",
         imageWrapper: "relative w-full grow min-h-[200px]",
         mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
@@ -95,18 +95,18 @@ export const Projects = () => {
           className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6"
         >
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
               Core Projects
             </h2>
             <div className="w-20 h-1.5 bg-chelsea rounded-full mb-4" />
-            <p className="text-white/60 max-w-xl text-lg">
+            <p className="text-muted-foreground max-w-xl text-lg">
               Showcasing my journey in building
-              <span className="text-white font-medium"> precise, accessible, and responsive</span> interfaces.
+              <span className="text-foreground font-medium"> precise, accessible, and responsive</span> interfaces.
             </p>
           </div>
           
           <Link to="/projects">
-            <Button variant="ghost" className="text-white hover:text-chelsea group">
+            <Button variant="ghost" className="text-foreground hover:text-chelsea group">
               View All Repos <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
@@ -114,7 +114,7 @@ export const Projects = () => {
 
         {/* The Checkerboard Bento Grid */}
         {/* Adjusted auto-rows to 360px for better vertical breathing room in the wide cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[360px]">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 auto-rows-auto md:auto-rows-[360px]">
           {projects.map((project, index) => {
             const layout = getBentoLayout(index);
 
@@ -125,12 +125,12 @@ export const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group relative overflow-hidden rounded-[32px] border border-white/10 bg-[#121214] flex transition-all duration-500 hover:border-white/20 hover:bg-[#18181b] shadow-2xl ${layout.wrapper}`}
+                className={`group relative overflow-hidden rounded-[32px] border border-border bg-card flex transition-all duration-500 hover:border-chelsea/30 hover:bg-accent shadow-2xl ${layout.wrapper}`}
               >
                 {/* Text Content Area */}
                 <div className={`${layout.content} flex flex-col z-10`}>
                   <div className="flex flex-wrap lg:flex-nowrap justify-between items-start gap-4 mb-4">
-                    <h3 className="text-2xl font-bold text-white tracking-tight">
+                    <h3 className="text-2xl font-bold text-foreground tracking-tight">
                       {project.title}
                     </h3>
                     <span className="text-[10px] uppercase tracking-wider font-bold text-chelsea bg-chelsea/10 px-3 py-1.5 rounded-full border border-chelsea/20 whitespace-nowrap">
@@ -138,7 +138,7 @@ export const Projects = () => {
                     </span>
                   </div>
                   
-                  <p className="text-white/60 leading-relaxed text-sm mb-6">
+                  <p className="text-muted-foreground leading-relaxed text-sm mb-6">
                     {project.description}
                   </p>
                   
@@ -146,7 +146,7 @@ export const Projects = () => {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[11px] font-medium px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white/70"
+                        className="text-[11px] font-medium px-3 py-1.5 rounded-lg bg-accent border border-border text-muted-foreground"
                       >
                         {tag}
                       </span>
@@ -157,12 +157,12 @@ export const Projects = () => {
                 {/* UI Masking / Visual Mockup Area */}
                 <div className={`${layout.imageWrapper} overflow-hidden pointer-events-none group-hover:pointer-events-auto`}>
                   {/* The encapsulated "App Window" bleeding off the edge */}
-                  <div className={`${layout.mockup} ${project.image} border border-white/10 flex flex-col transition-transform duration-700 group-hover:scale-[1.02]`}>
+                  <div className={`${layout.mockup} ${project.image} border-t border-l border-r border-border flex flex-col transition-transform duration-700 group-hover:scale-[1.02]`}>
                     {/* Abstract App Header Bar */}
-                    <div className="h-10 border-b border-white/10 flex items-center px-4 gap-2 opacity-40">
-                      <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                    <div className="h-10 border-b border-border flex items-center px-4 gap-2 opacity-40">
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
                     </div>
                   </div>
 
@@ -172,7 +172,7 @@ export const Projects = () => {
                       <Button
                         size="icon"
                         variant="secondary"
-                        className="rounded-full bg-white text-black hover:bg-gray-200 h-12 w-12"
+                        className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 h-12 w-12"
                       >
                         <Github className="w-6 h-6" />
                       </Button>
