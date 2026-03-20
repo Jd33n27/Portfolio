@@ -1,6 +1,6 @@
 import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
-import { ArrowLeft, Github } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -59,6 +59,8 @@ const featuredProjects = [
       category: "Ed-Tech UI",
       description: "A digital compilation of programming excercises",
       repo: "https://github.com/Jd33n27/CSC-218-pq",
+      demolink: "https://github.com/Jd33n27/CSC-218-pq",
+      slug: "programming-quiz",
       image: "bg-gradient-to-br from-slate-900 to-slate-800",
     },
     {
@@ -66,6 +68,8 @@ const featuredProjects = [
       category: "Data Analysis UI",
       description: "A tool for building interactive data visualization interfaces",
       repo: "https://github.com/Jd33n27/python-data-visualizer-for-research-project",
+      demolink: "https://github.com/Jd33n27/python-data-visualizer-for-research-project",
+      slug: "data-visualization",
       image: "bg-gradient-to-br from-green-950 to-emerald-950",
     },
     {
@@ -73,6 +77,8 @@ const featuredProjects = [
       category: "Ed-Tech UI",
       description: "An edtech dashboard layout",
       repo: "https://github.com/Jd33n27/Axia-2nd-Project",
+      demolink: "https://github.com/Jd33n27/Axia-2nd-Project",
+      slug: "react-learn",
       image: "bg-gradient-to-br from-yellow-950 to-amber-950",
     },
     {
@@ -80,6 +86,8 @@ const featuredProjects = [
       category: "Interactive UI",
       description: "An interactive JavaScript tool that dynamically changes the background color of the viewport. As a 'v2,' it includes A Modernized UI and advanced features like Hex code generation alongside standard color switching.",
       repo: "https://github.com/Jd33n27/color-flipper-v2",
+      demolink: "https://github.com/Jd33n27/color-flipper-v2",
+      slug: "color-flipper-v2",
       image: "bg-gradient-to-br from-purple-950 to-fuchsia-950",
     },
     {
@@ -87,6 +95,8 @@ const featuredProjects = [
       category: "Ed-Tech UI",
       description: "An academic Java application designed to demonstrate Object-Oriented Programming (OOP) concepts. This is a console-based or simple GUI tool created for a coursework assessment.",
       repo: "https://github.com/Jd33n27/java_school_project",
+      demolink: "https://github.com/Jd33n27/java_school_project",
+      slug: "cgpa-calculator",
       image: "bg-gradient-to-br from-slate-900 to-slate-800",
     },
   ];
@@ -279,7 +289,7 @@ export default function AboutPage() {
             const layout = getBentoLayout(index);
 
             return (
-                <motion.article
+              <motion.article
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -302,6 +312,24 @@ export default function AboutPage() {
                     {project.description}
                   </p>
                   
+                  <div className="flex flex-wrap gap-3 mt-auto">
+                    {project.demolink && (
+                      <a href={project.demolink} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
+                        <Button variant="default" size="sm" className="w-full gap-2">
+                          <ExternalLink className="w-4 h-4" />
+                          View Demo
+                        </Button>
+                      </a>
+                    )}
+                    {project.repo && (
+                      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
+                        <Button variant="outline" size="sm" className="w-full gap-2 border-border hover:bg-accent hover:text-foreground">
+                          <Github className="w-4 h-4" />
+                          Visit Repository
+                        </Button>
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 {/* UI Masking / Visual Mockup Area */}
@@ -314,19 +342,6 @@ export default function AboutPage() {
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
                     </div>
-                  </div>
-
-                  {/* Glass Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[4px] z-20">
-                    <a href={project.repo} target="_blank" rel="noopener noreferrer">
-                      <Button
-                        size="icon"
-                        variant="secondary"
-                        className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 h-12 w-12"
-                      >
-                        <Github className="w-6 h-6" />
-                      </Button>
-                    </a>
                   </div>
                 </div>
               </motion.article>

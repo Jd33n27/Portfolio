@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Github } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -158,6 +158,24 @@ export default function ProjectsPage() {
                     {project.description}
                   </p>
                   
+                  <div className="flex flex-wrap gap-3 mt-auto">
+                    {(project as any).demo && (
+                      <a href={(project as any).demo} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
+                        <Button variant="default" size="sm" className="w-full gap-2">
+                          <ExternalLink className="w-4 h-4" />
+                          View Demo
+                        </Button>
+                      </a>
+                    )}
+                    {project.repo && (
+                      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
+                        <Button variant="outline" size="sm" className="w-full gap-2 border-border hover:bg-accent hover:text-foreground">
+                          <Github className="w-4 h-4" />
+                          Visit Repository
+                        </Button>
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 {/* UI Masking / Visual Mockup Area */}
@@ -171,19 +189,6 @@ export default function ProjectsPage() {
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
                     </div>
-                  </div>
-
-                  {/* Glass Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[4px] z-20">
-                    <a href={project.repo} target="_blank" rel="noopener noreferrer">
-                      <Button
-                        size="icon"
-                        variant="secondary"
-                        className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 h-12 w-12"
-                      >
-                        <Github className="w-6 h-6" />
-                      </Button>
-                    </a>
                   </div>
                 </div>
               </motion.article>

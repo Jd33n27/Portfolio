@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, ArrowRight } from "lucide-react";
+import { Github, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -10,9 +10,9 @@ const projects = [
     description:
       "Developed a full-featured e-commerce frontend using React and integrated complex state management for shopping carts. Debugged and optimized core features to ensure a seamless checkout experience and responsive layout across all devices.",
     tags: ["React", "State Management", "Responsive Design"],
-    links: { demo: "#", github: "#" },
+    links: { demo: "https://lilyshops.com", github: "https://github.com/NexusMind-Company/Lily-Shop" },
     slug: "lily-shops",
-    image: "bg-linear-to-br from-slate-900 to-slate-800",
+    image: "bg-linear-to-br from-sky-900 to-slate-800",
   },
   {
     title: "FlowStack",
@@ -20,7 +20,7 @@ const projects = [
     description:
       "Engineered a secure user authentication flow and dashboard interface. Focused on design consistency and high-performance rendering to improve user retention.",
     tags: ["Authentication", "Dashboard", "Performance"],
-    links: { demo: "#", github: "#" },
+    links: { demo: "https://flow-stack-product.vercel.app", github: "https://github.com/Abdurrahman99max/FlowStack" },
     slug: "flowstack",
     image: "bg-linear-to-br from-green-950 to-emerald-950", 
   },
@@ -30,7 +30,7 @@ const projects = [
     description:
       "Developed a specialized web application to simplify tax calculations and information for the Nigerian market. Focused on a 'clean UI' and accessibility.",
     tags: ["UI/UX", "Accessibility", "Web App"],
-    links: { demo: "#", github: "#" },
+    links: { demo: "https://tax-clarity-ng.vercel.app/", github: "https://github.com/Apex-Shippers/Tax-Clarity-NG" },
     slug: "tax-clarity-ng",
     image: "bg-linear-to-br from-yellow-950 to-amber-950",
   },
@@ -40,7 +40,7 @@ const projects = [
     description:
       "Architected a modern web application using Next.js, leveraging SSR for improved SEO and performance. Configured a dedicated server from scratch.",
     tags: ["Next.js", "SSR", "DevOps"],
-    links: { demo: "#", github: "#" },
+    links: { demo: "https://phantomclips.com", github: "https://github.com/Jd33n27/Phantom-clip" },
     slug: "phantom-clips",
     image: "bg-linear-to-br from-purple-950 to-fuchsia-950",
   },
@@ -142,7 +142,7 @@ export const Projects = () => {
                     {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-2 mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
@@ -151,6 +151,25 @@ export const Projects = () => {
                         {tag}
                       </span>
                     ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-3 mt-auto">
+                    {project.links.demo && (
+                      <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
+                        <Button variant="default" size="sm" className="w-full gap-2">
+                          <ExternalLink className="w-4 h-4" />
+                          View Demo
+                        </Button>
+                      </a>
+                    )}
+                    {project.links.github && (
+                      <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
+                        <Button variant="outline" size="sm" className="w-full gap-2 border-border hover:bg-accent hover:text-foreground">
+                          <Github className="w-4 h-4" />
+                          Visit Repository
+                        </Button>
+                      </a>
+                    )}
                   </div>
                 </div>
 
@@ -164,19 +183,6 @@ export const Projects = () => {
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
                     </div>
-                  </div>
-
-                  {/* Glass Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[4px] z-20">
-                    <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                      <Button
-                        size="icon"
-                        variant="secondary"
-                        className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 h-12 w-12"
-                      >
-                        <Github className="w-6 h-6" />
-                      </Button>
-                    </a>
                   </div>
                 </div>
               </motion.article>
