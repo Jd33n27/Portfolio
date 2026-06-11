@@ -2,13 +2,16 @@ import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { ArrowLeft, Download, ExternalLink, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export default function ResumePage() {
   return (
-    <div className="min-h-screen pt-24 px-4 pb-20 md:px-32 lg:px-48">
+    <div className="min-h-screen pt-24 px-4 pb-28 md:px-32 lg:px-48">
       <Seo
         title="Resume | Musa Jamaldeen"
         description="Operational track record of Musa Jamaldeen. Engineering velocity and frontend architecture."
+        canonical="https://musa-jamaldeen.vercel.app/resume"
+        image="https://musa-jamaldeen.vercel.app/api/og?title=Resume%20%7C%20Musa%20Jamaldeen"
       />
 
       <div className="max-w-6xl mx-auto">
@@ -46,6 +49,8 @@ export default function ResumePage() {
               src="/img/IMG-20251104-WA0090.jpg"
               alt="Musa Jamaldeen"
               draggable="false"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover pointer-events-none select-none"
             />
           </div>
@@ -55,22 +60,38 @@ export default function ResumePage() {
               Musa Jamaldeen
             </h1>
             <p className="text-xl text-gray-400 mb-4">
-              Frontend Engineer. Product Builder.
+              Frontend Developer. Product Builder.
             </p>
             <p className="text-gray-400 mb-6 max-w-xl mx-auto lg:mx-0">
-              I build high-performance interfaces that convert. Focused on React
-              architecture, modern UI/UX standards, and rapid deployment cycles.
+              Computer Science student specializing in React, Next.js, and
+              TypeScript. I build clean, scalable interfaces and optimize every
+              small interaction so products feel minimal, fast, and easy to use.
             </p>
 
             <div className="flex gap-4 justify-center lg:justify-start flex-wrap">
-              <button className="px-6 py-3 bg-white text-black rounded-xl font-bold hover:opacity-90 transition-opacity flex items-center gap-2">
-                <Download className="w-5 h-5" />
-                Download PDF
-              </button>
-              <button className="px-6 py-3 border border-white/20 text-white rounded-xl font-medium hover:bg-white/10 transition-colors flex items-center gap-2">
-                <ExternalLink className="w-5 h-5" />
-                View GitHub
-              </button>
+              <Button
+                asChild
+                className="h-12 px-6 rounded-xl font-bold bg-white text-black hover:bg-white/90"
+              >
+                <a href="mailto:musajamaldeen627@gmail.com?subject=Resume%20Request">
+                  <Download className="w-5 h-5" />
+                  Request Resume
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="h-12 px-6 rounded-xl font-medium border-white/20 text-white hover:bg-white/10"
+              >
+                <a
+                  href="https://github.com/Jd33n27"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                  View GitHub
+                </a>
+              </Button>
             </div>
           </div>
         </motion.div>
@@ -87,13 +108,18 @@ export default function ResumePage() {
           </h2>
           <div className="flex flex-wrap gap-3">
             {[
-              "React",
+              "JavaScript",
               "TypeScript",
-              "Tailwind v4",
-              "Vite",
-              "Framer Motion",
+              "React",
+              "Next.js",
+              "Tailwind CSS",
+              "Bootstrap",
+              "Astro (Learning)",
+              "Go (Learning)",
+              "Figma",
+              "Responsive Web Design",
               "Git/GitHub",
-              "Firebase",
+              "Linux",
             ].map((skill) => (
               <span
                 key={skill}
@@ -113,24 +139,29 @@ export default function ResumePage() {
           className="w-full mb-12"
         >
           <h2 className="text-3xl font-bold text-white mb-6 border-l-4 border-chelsea pl-4">
-            Engineering Case Studies
+            Key Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: "Portfolio System V2",
-                tech: "React, Tailwind v4",
-                desc: "Engineered a high-performance personal brand asset. Achieved 99/100 Lighthouse score for Performance and SEO.",
+                title: "Lily-Shops",
+                tech: "React, State Management",
+                desc: "Developed a full-featured e-commerce frontend with shopping cart state, checkout flow debugging, and responsive layouts.",
               },
               {
-                title: "Lily-Shop Engine",
-                tech: "React, State Mgmt",
-                desc: "Developed a functional social commerce prototype with cart management, product filtering, and dynamic routing.",
+                title: "FlowStack",
+                tech: "Authentication, Dashboard UI",
+                desc: "Engineered a secure user authentication flow and dashboard interface with strong design consistency and fast rendering.",
               },
               {
-                title: "Digital Identity Hub",
-                tech: "HTML5, CSS3, Flexbox",
-                desc: "Built a mobile-first link aggregation tool to solve social traffic fragmentation. 100% responsive across all devices.",
+                title: "Tax Clarity NG",
+                tech: "React, Accessibility",
+                desc: "Built a Nigerian tax simplification app that turns complex financial information into a clean and digestible interface.",
+              },
+              {
+                title: "Phantom-clips",
+                tech: "Next.js, SSR, Deployment",
+                desc: "Architected a modern Next.js website with server-side rendering and handled server setup, configuration, and deployment.",
               },
             ].map((project, index) => (
               <div
@@ -159,15 +190,15 @@ export default function ResumePage() {
           className="w-full mb-12"
         >
           <h2 className="text-3xl font-bold text-white mb-6 border-l-4 border-chelsea pl-4">
-            The ROI (Return On Investment)
+            Performance Signature
           </h2>
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/[0.07] transition-colors">
             <ul className="space-y-4">
               {[
-                "Led a 5-person agile academic team to architect a scalable software system (LASU).",
-                "Reduced development cycle time by 50% by mastering the Vite + Tailwind v4 stack.",
-                "Engineered accessible UI components achieving 100% accessibility scores on audit.",
-                "Shipped 3+ functional React applications, moving from concept to deployment independently.",
+                "I optimize every little detail: spacing, loading states, component weight, interaction timing, and responsive behavior.",
+                "My goal is for every project to feel minimal and fast to the user, even when the product logic is complex.",
+                "I focus on clean UI/UX, efficient state management, accessibility, and design consistency across devices.",
+                "Currently expanding into Astro for fast content-driven sites and Go for stronger end-to-end product foundations.",
               ].map((item, index) => (
                 <li
                   key={index}
@@ -189,19 +220,22 @@ export default function ResumePage() {
           className="text-center py-12 border-t border-white/10"
         >
           <h2 className="text-3xl font-bold mb-6 text-white">
-            Hire for Potential. Keep for Results.
+            Hire for Speed. Keep for Product Taste.
           </h2>
           <p className="text-xl text-gray-400 mb-8">
-            I am ready to deploy into your engineering team and start shipping.
+            I am ready to ship interfaces that feel clean, minimal, and fast.
           </p>
           <div className="flex justify-center">
-            <a
-              href="mailto:musajamaldeen627@gmail.com"
-              className="px-8 py-3 bg-white text-black rounded-xl font-bold hover:scale-105 transition-transform flex items-center gap-2"
+            <Button
+              asChild
+              size="lg"
+              className="h-12 px-8 rounded-xl font-bold bg-white text-black hover:scale-[1.03] active:scale-[0.98] transition-transform"
             >
-              <Mail className="w-5 h-5" />
-              Contact Me
-            </a>
+              <a href="mailto:musajamaldeen627@gmail.com">
+                <Mail className="w-5 h-5" />
+                Contact Me
+              </a>
+            </Button>
           </div>
         </motion.section>
       </div>

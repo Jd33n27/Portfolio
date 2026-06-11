@@ -1,8 +1,10 @@
 import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
-import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+// import { Github, ExternalLink } from "lucide-react";
+// import { Button } from "@/components/ui/button";
+// import { getBentoLayout } from "@/lib/bento-layout";
 
 // Reusable Components
 
@@ -20,10 +22,14 @@ const SectionHeader = ({ title }: { title: string }) => (
 const TechCard = ({
   name,
   iconPath,
+  iconText,
+  iconType,
   color,
 }: {
   name: string;
-  iconPath: string;
+  iconPath?: string;
+  iconText?: string;
+  iconType?: "react-atom";
   color: string;
 }) => (
   <motion.div
@@ -34,17 +40,35 @@ const TechCard = ({
   >
     <div className="flex items-center gap-3">
       <div
-        className="p-2 rounded-lg bg-accent group-hover:scale-110 transition-transform duration-300"
+        className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent group-hover:scale-110 transition-transform duration-300"
         style={{ color: color }}
       >
-        <svg
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          className="w-6 h-6"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d={iconPath} />
-        </svg>
+        {iconText ? (
+          <span className="text-sm font-extrabold tracking-normal">{iconText}</span>
+        ) : iconType === "react-atom" ? (
+          <svg
+            viewBox="-11.5 -10.23174 23 20.46348"
+            className="h-7 w-7"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
+          >
+            <circle cx="0" cy="0" r="2.05" fill="currentColor" />
+            <g fill="none" stroke="currentColor" strokeWidth="1">
+              <ellipse rx="11" ry="4.2" />
+              <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+              <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+            </g>
+          </svg>
+        ) : (
+          <svg
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            className="w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d={iconPath} />
+          </svg>
+        )}
       </div>
       <span className="font-medium text-lg text-muted-foreground group-hover:text-foreground">
         {name}
@@ -53,97 +77,62 @@ const TechCard = ({
   </motion.div>
 );
 
-const featuredProjects = [
-    {
-      title: "Programming Quiz",
-      category: "Ed-Tech UI",
-      description: "A digital compilation of programming excercises",
-      repo: "https://github.com/Jd33n27/CSC-218-pq",
-      demolink: "https://github.com/Jd33n27/CSC-218-pq",
-      slug: "programming-quiz",
-      image: "bg-gradient-to-br from-slate-900 to-slate-800",
-    },
-    {
-      title: "Data Visualization Tool",
-      category: "Data Analysis UI",
-      description: "A tool for building interactive data visualization interfaces",
-      repo: "https://github.com/Jd33n27/python-data-visualizer-for-research-project",
-      demolink: "https://github.com/Jd33n27/python-data-visualizer-for-research-project",
-      slug: "data-visualization",
-      image: "bg-gradient-to-br from-green-950 to-emerald-950",
-    },
-    {
-      title: "React Learn",
-      category: "Ed-Tech UI",
-      description: "An edtech dashboard layout",
-      repo: "https://github.com/Jd33n27/Axia-2nd-Project",
-      demolink: "https://github.com/Jd33n27/Axia-2nd-Project",
-      slug: "react-learn",
-      image: "bg-gradient-to-br from-yellow-950 to-amber-950",
-    },
-    {
-      title: "Color Flipper V2",
-      category: "Interactive UI",
-      description: "An interactive JavaScript tool that dynamically changes the background color of the viewport. As a 'v2,' it includes A Modernized UI and advanced features like Hex code generation alongside standard color switching.",
-      repo: "https://github.com/Jd33n27/color-flipper-v2",
-      demolink: "https://github.com/Jd33n27/color-flipper-v2",
-      slug: "color-flipper-v2",
-      image: "bg-gradient-to-br from-purple-950 to-fuchsia-950",
-    },
-    {
-      title: "CGPA Calculator",
-      category: "Ed-Tech UI",
-      description: "An academic Java application designed to demonstrate Object-Oriented Programming (OOP) concepts. This is a console-based or simple GUI tool created for a coursework assessment.",
-      repo: "https://github.com/Jd33n27/java_school_project",
-      demolink: "https://github.com/Jd33n27/java_school_project",
-      slug: "cgpa-calculator",
-      image: "bg-gradient-to-br from-slate-900 to-slate-800",
-    },
-  ];
-
-  const getBentoLayout = (index: number) => {
-    const layoutIndex = index % 4;
-    switch (layoutIndex) {
-      case 0: // Top Left: Square
-        return {
-          wrapper: "md:col-span-2 md:row-span-1 flex-col",
-          content: "p-8 pb-4",
-          imageWrapper: "relative w-full grow min-h-[200px]",
-          mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
-        };
-      case 1: // Top Right: Wide Rectangle
-        return {
-          wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
-          content: "p-8 md:w-[55%] flex flex-col justify-center",
-          imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
-          mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
-        };
-      case 2: // Bottom Left: Wide Rectangle
-        return {
-          wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
-          content: "p-8 md:w-[55%] flex flex-col justify-center",
-          imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
-          mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
-        };
-      case 3: // Bottom Right: Square
-        return {
-          wrapper: "md:col-span-2 md:row-span-1 flex-col",
-          content: "p-8 pb-4",
-          imageWrapper: "relative w-full grow min-h-[200px]",
-          mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
-        };
-      default:
-        return { wrapper: "", content: "", imageWrapper: "", mockup: "" };
-    }
-  };
-
+// const featuredProjects = [
+//     {
+//       title: "Programming Quiz",
+//       category: "Ed-Tech UI",
+//       description: "A digital compilation of programming excercises",
+//       repo: "https://github.com/Jd33n27/CSC-218-pq",
+//       demolink: "https://github.com/Jd33n27/CSC-218-pq",
+//       slug: "programming-quiz",
+//       image: "bg-gradient-to-br from-slate-900 to-slate-800",
+//     },
+//     {
+//       title: "Data Visualization Tool",
+//       category: "Data Analysis UI",
+//       description: "A tool for building interactive data visualization interfaces",
+//       repo: "https://github.com/Jd33n27/python-data-visualizer-for-research-project",
+//       demolink: "https://github.com/Jd33n27/python-data-visualizer-for-research-project",
+//       slug: "data-visualization",
+//       image: "bg-gradient-to-br from-green-950 to-emerald-950",
+//     },
+//     {
+//       title: "React Learn",
+//       category: "Ed-Tech UI",
+//       description: "An edtech dashboard layout",
+//       repo: "https://github.com/Jd33n27/Axia-2nd-Project",
+//       demolink: "https://github.com/Jd33n27/Axia-2nd-Project",
+//       slug: "react-learn",
+//       image: "bg-gradient-to-br from-yellow-950 to-amber-950",
+//     },
+//     {
+//       title: "Color Flipper V2",
+//       category: "Interactive UI",
+//       description: "An interactive JavaScript tool that dynamically changes the background color of the viewport. As a 'v2,' it includes A Modernized UI and advanced features like Hex code generation alongside standard color switching.",
+//       repo: "https://github.com/Jd33n27/color-flipper-v2",
+//       demolink: "https://github.com/Jd33n27/color-flipper-v2",
+//       slug: "color-flipper-v2",
+//       image: "bg-gradient-to-br from-purple-950 to-fuchsia-950",
+//     },
+//     {
+//       title: "CGPA Calculator",
+//       category: "Ed-Tech UI",
+//       description: "An academic Java application designed to demonstrate Object-Oriented Programming (OOP) concepts. This is a console-based or simple GUI tool created for a coursework assessment.",
+//       repo: "https://github.com/Jd33n27/java_school_project",
+//       demolink: "https://github.com/Jd33n27/java_school_project",
+//       slug: "cgpa-calculator",
+//       image: "bg-gradient-to-br from-slate-900 to-slate-800",
+//     },
+//   ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-24 px-4 pb-20 md:px-32 lg:px-48">
+    <div className="min-h-screen pt-24 px-4 pb-28 md:px-32 lg:px-48">
       <Seo
         title="About Musa Jamaldeen"
         description="I don't just write code. I build revenue-generating assets for businesses using React and Next.js."
+        canonical="https://musa-jamaldeen.vercel.app/about"
+        image="https://musa-jamaldeen.vercel.app/api/og?title=Frontend%20Systems%20That%20Feel%20Fast"
       />
       <div className="max-w-6xl mx-auto">
         {/* Back Link */}
@@ -207,11 +196,6 @@ export default function AboutPage() {
                   </span>
                   , let’s talk.
                 </p>
-
-                <p>
-                  If you want aesthetics without outcomes,{" "}
-                  <span className="text-foreground font-bold">I’m not a fit.</span>
-                </p>
               </div>
             </motion.div>
 
@@ -231,6 +215,8 @@ export default function AboutPage() {
                   src="/img/IMG-20251104-WA0090.jpg"
                   alt="Musa Jamaldeen"
                   draggable="false"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover pointer-events-none select-none"
                 />
               </div>
@@ -241,6 +227,12 @@ export default function AboutPage() {
         {/* Tech Stack Grid */}
         <section className="mb-24">
           <SectionHeader title="High-Leverage Stack" />
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-8">
+            My leverage is strongest where frontend engineering, product speed,
+            and clean UI meet: TypeScript, React, Next.js, Tailwind CSS, and
+            performance-focused implementation. I am adding Astro for fast
+            content-driven sites and Go as a backend learning track.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* JavaScript */}
             <TechCard
@@ -257,8 +249,8 @@ export default function AboutPage() {
             {/* React */}
             <TechCard
               name="React"
-              color="#61DAFB"
-              iconPath="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565z"
+              color="#38BDF8"
+              iconType="react-atom"
             />
             {/* Next.js */}
             <TechCard
@@ -272,83 +264,27 @@ export default function AboutPage() {
               color="#06B6D4"
               iconPath="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565-0.89-2.288-1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
             />
-            {/* Firebase */}
+            {/* Astro */}
             <TechCard
-              name="Firebase"
-              color="#FFCA28"
-              iconPath="M19.455 8.369c-.538-.748-1.778-2.285-3.681-4.569-.826-.991-1.535-1.832-1.884-2.245a146 146 0 0 0-.488-.576l-.207-.245-.113-.133-.022-.032-.01-.005L12.57 0l-.609.488c-1.555 1.246-2.828 2.851-3.681 4.64-.523 1.064-.864 2.105-1.043 3.176-.047.241-.088.489-.121.738-.209-.017-.421-.028-.632-.033-.018-.001-.035-.002-.059-.003a7.46 7.46 0 0 0-2.28.274l-.317.089-.163.286c-.765 1.342-1.198 2.869-1.252 4.416-.07 2.01.477 3.954 1.583 5.625 1.082 1.633 2.61 2.882 4.42 3.611l.236.095.071.025.003-.001a9.59 9.59 0 0 0 2.941.568q.171.006.342.006c1.273 0 2.513-.249 3.69-.742l.008.004.313-.145a9.63 9.63 0 0 0 3.927-3.335c1.01-1.49 1.577-3.234 1.641-5.042.075-2.161-.643-4.304-2.133-6.371"
+              name="Astro (Learning)"
+              color="#FF5D01"
+              iconPath="M12 2 4.2 20.5c-.2.5.2 1 0.7 1h3.7c.3 0 .6-.2.7-.5L12 14.4l2.7 6.6c.1.3.4.5.7.5h3.7c.5 0 .9-.5.7-1L12 2Zm0 5.2 2.1 5.1H9.9L12 7.2Z"
+            />
+            {/* Go */}
+            <TechCard
+              name="Go (Learning)"
+              color="#00ADD8"
+              iconText="Go"
             />
           </div>
         </section>
 
-        {/* Proof of Work Section (Formerly Experience) */}
+        {/* Proof of Work Section intentionally paused while the portfolio is repositioned.
         <section className="mb-24">
           <SectionHeader title="Featured Projects" />
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 auto-rows-auto md:auto-rows-[360px]">
-          {featuredProjects.map((project, index) => {
-            const layout = getBentoLayout(index);
-
-            return (
-              <motion.article
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group relative overflow-hidden rounded-[32px] border border-border bg-card flex transition-all duration-500 hover:border-chelsea/30 hover:bg-accent shadow-2xl ${layout.wrapper}`}
-              >
-                {/* Text Content Area */}
-                <div className={`${layout.content} flex flex-col z-10`}>
-                  <div className="flex flex-wrap lg:flex-nowrap justify-between items-start gap-4 mb-4">
-                    <h3 className="text-2xl font-bold text-foreground tracking-tight">
-                      {project.title}
-                    </h3>
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-chelsea bg-chelsea/10 px-3 py-1.5 rounded-full border border-chelsea/20 whitespace-nowrap">
-                      {project.category}
-                    </span>
-                  </div>
-                  
-                  <p className="text-muted-foreground leading-relaxed text-sm mb-6">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-3 mt-auto">
-                    {project.demolink && (
-                      <a href={project.demolink} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
-                        <Button variant="default" size="sm" className="w-full gap-2">
-                          <ExternalLink className="w-4 h-4" />
-                          View Demo
-                        </Button>
-                      </a>
-                    )}
-                    {project.repo && (
-                      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
-                        <Button variant="outline" size="sm" className="w-full gap-2 border-border hover:bg-accent hover:text-foreground">
-                          <Github className="w-4 h-4" />
-                          Visit Repository
-                        </Button>
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                {/* UI Masking / Visual Mockup Area */}
-                <div className={`${layout.imageWrapper} overflow-hidden pointer-events-none group-hover:pointer-events-auto`}>
-                  {/* The encapsulated "App Window" bleeding off the edge */}
-                  <div className={`${layout.mockup} ${project.image} border-t border-l border-r border-border flex flex-col transition-transform duration-700 group-hover:scale-[1.02]`}>
-                    {/* Abstract App Header Bar */}
-                    <div className="h-10 border-b border-border flex items-center px-4 gap-2 opacity-40">
-                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
-                    </div>
-                  </div>
-                </div>
-              </motion.article>
-            )
-          })}
-        </div>
+          ...
         </section>
+        */}
       </div>
     </div>
   );

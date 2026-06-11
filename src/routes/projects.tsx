@@ -1,18 +1,21 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { getBentoLayout } from "@/lib/bento-layout";
+import Seo from "@/components/Seo";
+import { useState } from "react";
 
-// ACTUAL GITHUB DATA (Verified for Jd33n27)
 const projects = [
   {
     title: "Portfolio System",
     category: "React Ecosystem",
     description:
       "A production-grade developer portfolio built with Vite, Tailwind CSS v4, and Framer Motion. Features advanced animations and 'Business Mode' theming.",
-    image: "/assets/portfolio.jpg", // Ensure you have a placeholder or use a gradient
+    image: "/assets/portfolio.jpg",
+    gradient: "bg-linear-to-br from-slate-900 to-blue-950",
     slug: "portfolio-v2",
-    repo: "https://github.com/Jd33n27/portfolio-2" // Assuming repo name
+    repo: "https://github.com/Jd33n27/portfolio-2",
   },
   {
     title: "Digital Identity Hub",
@@ -20,8 +23,9 @@ const projects = [
     description:
       "Social-links-profile. A mobile-responsive hub for aggregating social media touchpoints. Solves the 'one link in bio' problem with a clean, fast UI.",
     image: "/assets/socials.jpg",
+    gradient: "bg-linear-to-br from-indigo-950 to-slate-900",
     slug: "social-links",
-    repo: "https://github.com/Jd33n27/Social-links-profile"
+    repo: "https://github.com/Jd33n27/Social-links-profile",
   },
   {
     title: "High-CTR Content Card",
@@ -29,8 +33,9 @@ const projects = [
     description:
       "BLOG-PREVIEW-CARD. A rigorous implementation of a content preview interface. Focuses on typographic scale, spacing, and hover states to maximize user engagement.",
     image: "/assets/blog-card.jpg",
+    gradient: "bg-linear-to-br from-rose-950 to-slate-900",
     slug: "blog-preview",
-    repo: "https://github.com/Jd33n27/BLOG-PREVIEW-CARD"
+    repo: "https://github.com/Jd33n27/BLOG-PREVIEW-CARD",
   },
   {
     title: "QR Access Module",
@@ -38,8 +43,9 @@ const projects = [
     description:
       "Getting-started / QR Component. A scannable, high-contrast QR code component designed for instant physical-to-digital user acquisition.",
     image: "/assets/qr.jpg",
+    gradient: "bg-linear-to-br from-emerald-950 to-slate-900",
     slug: "qr-component",
-    repo: "https://github.com/Jd33n27/Getting-started" 
+    repo: "https://github.com/Jd33n27/Getting-started",
   },
   {
     title: "E-Commerce Layout Engine",
@@ -47,8 +53,9 @@ const projects = [
     description:
       "Axia-2nd-monthly-exam-practtical. A responsive grid layout demonstrating mastery of modern CSS Grid and Flexbox for product listings.",
     image: "/assets/axia.jpg",
+    gradient: "bg-linear-to-br from-amber-950 to-slate-900",
     slug: "axia-practical",
-    repo: "https://github.com/Jd33n27/Axia-2nd-monthly-exam-practtical"
+    repo: "https://github.com/Jd33n27/Axia-2nd-monthly-exam-practtical",
   },
   {
     title: "Axia Cohort 8 Foundation",
@@ -56,53 +63,48 @@ const projects = [
     description:
       "COHORT8. A collection of foundational web development experiments and structure tests during the Axia Africa bootcamp.",
     image: "/assets/cohort.jpg",
+    gradient: "bg-linear-to-br from-violet-950 to-slate-900",
     slug: "cohort-8",
-    repo: "https://github.com/Jd33n27/COHORT8"
+    repo: "https://github.com/Jd33n27/COHORT8",
   },
 ];
 
-const getBentoLayout = (index: number) => {
-    const layoutIndex = index % 4;
-    switch (layoutIndex) {
-      case 0: // Top Left: Square
-        return {
-          wrapper: "md:col-span-2 md:row-span-1 flex-col",
-          content: "p-8 pb-4",
-          imageWrapper: "relative w-full grow min-h-[200px]",
-          mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
-        };
-      case 1: // Top Right: Wide Rectangle
-        return {
-          wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
-          content: "p-8 md:w-[55%] flex flex-col justify-center",
-          imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
-          mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
-        };
-      case 2: // Bottom Left: Wide Rectangle
-        return {
-          wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
-          content: "p-8 md:w-[55%] flex flex-col justify-center",
-          imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
-          mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
-        };
-      case 3: // Bottom Right: Square
-        return {
-          wrapper: "md:col-span-2 md:row-span-1 flex-col",
-          content: "p-8 pb-4",
-          imageWrapper: "relative w-full grow min-h-[200px]",
-          mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
-        };
-      default:
-        return { wrapper: "", content: "", imageWrapper: "", mockup: "" };
-    }
-  };
-  
+function ProjectImage({
+  src,
+  alt,
+  gradient,
+}: {
+  src: string;
+  alt: string;
+  gradient: string;
+}) {
+  const [failed, setFailed] = useState(false);
+
+  return (
+    <div className={`absolute inset-0 ${gradient}`}>
+      {!failed && (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          onError={() => setFailed(true)}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
+    </div>
+  );
+}
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen pt-24 px-4 pb-20 md:px-8 lg:px-12">
+    <div className="min-h-screen pt-24 px-4 pb-28 md:px-8 lg:px-12">
+      <Seo
+        title="Projects | Musa Jamaldeen"
+        description="Selected works and repositories by Musa Jamaldeen — scalable React and Next.js applications built for real business outcomes."
+        canonical="https://musa-jamaldeen.vercel.app/projects"
+      />
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="mb-16">
           <Link
             to="/"
@@ -129,21 +131,19 @@ export default function ProjectsPage() {
           </motion.div>
         </div>
 
-        {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 auto-rows-auto md:auto-rows-[360px]">
           {projects.map((project, index) => {
             const layout = getBentoLayout(index);
 
             return (
-                <motion.article
-                key={index}
+              <motion.article
+                key={project.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 className={`group relative overflow-hidden rounded-[32px] border border-border bg-card flex transition-all duration-500 hover:border-chelsea/30 hover:bg-accent shadow-2xl ${layout.wrapper}`}
               >
-                {/* Text Content Area */}
                 <div className={`${layout.content} flex flex-col z-10`}>
                   <div className="flex flex-wrap lg:flex-nowrap justify-between items-start gap-4 mb-4">
                     <h3 className="text-2xl font-bold text-foreground tracking-tight">
@@ -153,23 +153,24 @@ export default function ProjectsPage() {
                       {project.category}
                     </span>
                   </div>
-                  
+
                   <p className="text-muted-foreground leading-relaxed text-sm mb-6">
                     {project.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-3 mt-auto">
-                    {(project as any).demo && (
-                      <a href={(project as any).demo} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
-                        <Button variant="default" size="sm" className="w-full gap-2">
-                          <ExternalLink className="w-4 h-4" />
-                          View Demo
-                        </Button>
-                      </a>
-                    )}
                     {project.repo && (
-                      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none">
-                        <Button variant="outline" size="sm" className="w-full gap-2 border-border hover:bg-accent hover:text-foreground">
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 sm:flex-none"
+                      >
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="w-full gap-2 border-border hover:bg-accent hover:text-foreground"
+                        >
                           <Github className="w-4 h-4" />
                           Visit Repository
                         </Button>
@@ -178,13 +179,16 @@ export default function ProjectsPage() {
                   </div>
                 </div>
 
-                {/* UI Masking / Visual Mockup Area */}
-                <div className={`${layout.imageWrapper} overflow-hidden pointer-events-none group-hover:pointer-events-auto`}>
-                  {/* The encapsulated "App Window" bleeding off the edge */}
-                  <div className={`${layout.mockup} border border-border flex flex-col transition-transform duration-700 group-hover:scale-[1.02] bg-black`}>
-                    <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover" />
-                    {/* Abstract App Header Bar */}
-                    <div className="relative h-10 border-b border-border flex items-center px-4 gap-2 bg-black/20 backdrop-blur-sm">
+                <div className={`${layout.imageWrapper} overflow-hidden`}>
+                  <div
+                    className={`${layout.mockup} border border-border flex flex-col transition-transform duration-700 group-hover:scale-[1.02] bg-black relative overflow-hidden`}
+                  >
+                    <ProjectImage
+                      src={project.image}
+                      alt={project.title}
+                      gradient={project.gradient}
+                    />
+                    <div className="relative h-10 border-b border-border flex items-center px-4 gap-2 bg-black/30 backdrop-blur-sm z-10">
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/20" />
@@ -192,7 +196,7 @@ export default function ProjectsPage() {
                   </div>
                 </div>
               </motion.article>
-            )
+            );
           })}
         </div>
       </div>

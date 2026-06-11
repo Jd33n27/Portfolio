@@ -1,5 +1,5 @@
 import { Hero } from "@/components/Hero";
-import { Projects } from "@/components/Projects/ProjectCard";
+// import { Projects } from "@/components/Projects/ProjectCard";
 import Seo from "@/components/Seo"; 
 
 export default function HomePage() {
@@ -11,7 +11,8 @@ export default function HomePage() {
         canonical="https://musa-jamaldeen.vercel.app/"
       />
       <Hero />
-      <Projects />
+      {/* Projects section intentionally paused while the portfolio is repositioned. */}
+      {/* <Projects /> */}
     </div>
   );
 }

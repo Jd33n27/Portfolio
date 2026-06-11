@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Github, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { getBentoLayout } from "@/lib/bento-layout";
 
 const projects = [
   {
@@ -46,45 +47,9 @@ const projects = [
   },
 ];
 
-// Updated Spatial Logic for Checkerboard Bento
-const getBentoLayout = (index: number) => {
-  switch (index) {
-    case 0: // Top Left: Square
-      return {
-        wrapper: "md:col-span-2 md:row-span-1 flex-col",
-        content: "p-8 pb-4",
-        imageWrapper: "relative w-full grow min-h-[200px]",
-        mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
-      };
-    case 1: // Top Right: Wide Rectangle
-      return {
-        wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
-        content: "p-8 md:w-[55%] flex flex-col justify-center",
-        imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
-        mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
-      };
-    case 2: // Bottom Left: Wide Rectangle
-      return {
-        wrapper: "md:col-span-3 md:row-span-1 flex-col md:flex-row",
-        content: "p-8 md:w-[55%] flex flex-col justify-center",
-        imageWrapper: "relative w-full md:w-[45%] grow min-h-[220px] md:min-h-full",
-        mockup: "absolute inset-y-6 left-6 right-[-20px] rounded-l-[24px]", // Bleeds right
-      };
-    case 3: // Bottom Right: Square
-      return {
-        wrapper: "md:col-span-2 md:row-span-1 flex-col",
-        content: "p-8 pb-4",
-        imageWrapper: "relative w-full grow min-h-[200px]",
-        mockup: "absolute top-4 left-6 right-[-20px] bottom-[-20px] rounded-tl-[24px]", // Bleeds bottom-right
-      };
-    default:
-      return { wrapper: "", content: "", imageWrapper: "", mockup: "" };
-  }
-};
-
 export const Projects = () => {
   return (
-    <section className="py-24 bg-transparent relative" id="projects">
+    <section className="py-24 bg-transparent relative scroll-mt-24" id="projects">
       <div className="max-w-6xl px-6 mx-auto">
         {/* Section Header */}
         <motion.div
@@ -120,7 +85,7 @@ export const Projects = () => {
 
             return (
               <motion.article
-                key={index}
+                key={project.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
