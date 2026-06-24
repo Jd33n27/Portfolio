@@ -88,7 +88,7 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-5 min-h-[5.5rem] md:min-h-0">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-5 min-h-22 md:min-h-0">
             Make it{" "}
             <span className="text-white/40">
               {reducedMotion ? "Profitable." : animatedText}

@@ -4,6 +4,82 @@ import { ArrowLeft, Download, ExternalLink, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
+interface Project {
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  links: {
+    demo: string;
+    github: string;
+  };
+  slug: string;
+}
+
+const PROJECTS: Project[] = [
+  {
+    title: "Tax Clarity NG",
+    category: "Fintech Application",
+    description:
+      "Developed a specialized web application to simplify tax calculations and information for the Nigerian market. Focused on a 'clean UI' and accessibility.",
+    tags: ["Astro", "JavaScript"],
+    links: {
+      demo: "https://tax-clarity-ng.vercel.app/",
+      github: "https://github.com/Apex-Shippers/Tax-Clarity-NG",
+    },
+    slug: "tax-clarity-ng",
+  },
+  {
+    title: "MedBook Diagnostics",
+    category: "MedTech Web App",
+    description:
+      "Browse labs, compare prices, book appointments, pay, get digital results. Built for the Nigerian healthcare market.",
+    tags: ["Vite + React", "Typescript", "GO", "MySql"],
+    links: {
+      demo: "https://medical-test-booking-platform.vercel.app/",
+      github:
+        "https://github.com/Jd33n27/Medical-test-booking-platform",
+    },
+    slug: "medbook-diagnostics",
+  },
+  {
+    title: "Lily-Shops",
+    category: "E-commerce Platform",
+    description:
+      "Developed a full-featured e-commerce frontend using React and integrated complex state management for shopping carts. Debugged and optimized core features to ensure a seamless checkout experience and responsive layout across all devices.",
+    tags: ["Vite + React", "State Management"],
+    links: {
+      demo: "https://lilyshops.com",
+      github: "https://github.com/NexusMind-Company/Lily-Shop",
+    },
+    slug: "lily-shops",
+  },
+  {
+    title: "Phantom Scraper",
+    category: "HR Tech whitespace App",
+    description:
+      "Scrapes job listings, auto-applies based on rules. Built with AI agents and zero-budget stack.",
+    tags: ["Vite + React", "Go", "PostgreSQL", "Node.Js"],
+    links: {
+      demo: "https://job-scraper-mvp.vercel.app/",
+      github: "https://github.com/Jd33n27/job-scraper-mvp",
+    },
+    slug: "Phantom Scraper",
+  },
+  {
+    title: "FlowStack",
+    category: "User Management System",
+    description:
+      "Engineered a secure user authentication flow and dashboard interface. Focused on design consistency and high-performance rendering to improve user retention.",
+    tags: ["Next.js", "PostgreSQL"],
+    links: {
+      demo: "https://flow-stack-product.vercel.app",
+      github: "https://github.com/Abdurrahman99max/FlowStack",
+    },
+    slug: "flowstack",
+  },
+];
+
 export default function ResumePage() {
   return (
     <div className="min-h-screen pt-24 px-4 pb-28 md:px-32 lg:px-48">
@@ -108,18 +184,18 @@ export default function ResumePage() {
           </h2>
           <div className="flex flex-wrap gap-3">
             {[
-              "JavaScript",
+              // "JavaScript",
               "TypeScript",
               "React",
-              "Next.js",
+              // "Next.js",
               "Tailwind CSS",
-              "Bootstrap",
-              "Astro (Learning)",
+              // "Bootstrap",
+              // "Astro (Learning)",
               "Go (Learning)",
-              "Figma",
-              "Responsive Web Design",
-              "Git/GitHub",
-              "Linux",
+              // "Figma",
+              // "Responsive Web Design",
+              // "Git/GitHub",
+              // "Linux",
             ].map((skill) => (
               <span
                 key={skill}
@@ -142,42 +218,31 @@ export default function ResumePage() {
             Key Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Lily-Shops",
-                tech: "React, State Management",
-                desc: "Developed a full-featured e-commerce frontend with shopping cart state, checkout flow debugging, and responsive layouts.",
-              },
-              {
-                title: "FlowStack",
-                tech: "Authentication, Dashboard UI",
-                desc: "Engineered a secure user authentication flow and dashboard interface with strong design consistency and fast rendering.",
-              },
-              {
-                title: "Tax Clarity NG",
-                tech: "React, Accessibility",
-                desc: "Built a Nigerian tax simplification app that turns complex financial information into a clean and digestible interface.",
-              },
-              {
-                title: "Phantom-clips",
-                tech: "Next.js, SSR, Deployment",
-                desc: "Architected a modern Next.js website with server-side rendering and handled server setup, configuration, and deployment.",
-              },
-            ].map((project, index) => (
-              <div
+            {PROJECTS.map((project, index) => (
+              <a
                 key={index}
-                className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group"
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group block"
               >
                 <h3 className="font-bold text-white mb-2 text-lg group-hover:text-chelsea transition-colors">
                   {project.title}
                 </h3>
-                <span className="text-xs font-semibold text-chelsea-light mb-3 inline-block bg-chelsea/10 px-2 py-1 rounded">
-                  {project.tech}
-                </span>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs font-semibold text-chelsea-light bg-chelsea/10 px-2 py-1 rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  {project.desc}
+                  {project.description}
                 </p>
-              </div>
+              </a>
             ))}
           </div>
         </motion.div>

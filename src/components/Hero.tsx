@@ -72,7 +72,7 @@ export const Hero = () => {
       ref={containerRef}
       className="relative min-h-[calc(100dvh-4rem)] flex items-center justify-center pt-24 pb-16 overflow-hidden"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] bg-chelsea/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-lg h-128 bg-chelsea/10 rounded-full blur-[120px] pointer-events-none" />
 
       <FloatingBadge
         icon={Code2}
